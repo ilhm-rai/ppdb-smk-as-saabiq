@@ -6,6 +6,7 @@ use CodeIgniter\Config\BaseConfig;
 
 class Email extends BaseConfig
 {
+
     /**
      * @var string
      */
@@ -33,7 +34,7 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $protocol = 'mail';
+    public $protocol = 'smtp';
 
     /**
      * The server path to Sendmail.
@@ -47,7 +48,7 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPHost;
+    public $SMTPHost = 'smtp.gmail.com';
 
     /**
      * SMTP Username
@@ -66,21 +67,21 @@ class Email extends BaseConfig
     /**
      * SMTP Port
      *
-     * @var int
+     * @var integer
      */
-    public $SMTPPort = 25;
+    public $SMTPPort = 465;
 
     /**
      * SMTP Timeout (in seconds)
      *
-     * @var int
+     * @var integer
      */
-    public $SMTPTimeout = 5;
+    public $SMTPTimeout = 60;
 
     /**
      * Enable persistent SMTP connections
      *
-     * @var bool
+     * @var boolean
      */
     public $SMTPKeepAlive = false;
 
@@ -89,19 +90,19 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPCrypto = 'tls';
+    public $SMTPCrypto = 'ssl';
 
     /**
      * Enable word-wrap
      *
-     * @var bool
+     * @var boolean
      */
     public $wordWrap = true;
 
     /**
      * Character count to wrap at
      *
-     * @var int
+     * @var integer
      */
     public $wrapChars = 76;
 
@@ -110,7 +111,7 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $mailType = 'text';
+    public $mailType = 'html';
 
     /**
      * Character set (utf-8, iso-8859-1, etc.)
@@ -122,14 +123,14 @@ class Email extends BaseConfig
     /**
      * Whether to validate the email address
      *
-     * @var bool
+     * @var boolean
      */
     public $validate = false;
 
     /**
      * Email Priority. 1 = highest. 5 = lowest. 3 = normal
      *
-     * @var int
+     * @var integer
      */
     public $priority = 3;
 
@@ -150,21 +151,21 @@ class Email extends BaseConfig
     /**
      * Enable BCC Batch Mode.
      *
-     * @var bool
+     * @var boolean
      */
     public $BCCBatchMode = false;
 
     /**
      * Number of emails in each BCC batch
      *
-     * @var int
+     * @var integer
      */
     public $BCCBatchSize = 200;
 
     /**
      * Enable notify message from server
      *
-     * @var bool
+     * @var boolean
      */
     public $DSN = false;
 }
