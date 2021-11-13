@@ -43,6 +43,13 @@
       <span>Data Jurusan</span></a>
   </li>
 
+  <!-- Nav Item Jalur Registrasi -->
+  <li class="nav-item">
+    <a class="nav-link" href="<?= base_url('admin/jalur'); ?>">
+      <i class="fas fa-fw fa-graduation-cap"></i>
+      <span>Jalur Registrasi</span></a>
+  </li>
+
   <!-- Divider -->
   <hr class="sidebar-divider">
 

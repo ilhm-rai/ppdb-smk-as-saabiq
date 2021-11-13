@@ -14,7 +14,7 @@ class CreateJalurRegistrasi extends Migration
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'role_name' => [
+            'nama_jalur' => [
                 'type' => 'varchar',
                 'constraint' => 128,
             ],

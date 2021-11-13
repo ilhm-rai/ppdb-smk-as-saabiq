@@ -9,7 +9,7 @@ class Dashboard extends BaseController
   public function index()
   {
     $data = [
-      'title' => 'Dashboard | Sportpedia'
+      'title' => 'Dashboard | PPDB SMK As-Saabiq'
     ];
     return view('dashboard/admin/index', $data);
   }

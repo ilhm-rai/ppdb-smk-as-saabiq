@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateRoles extends Migration
+class CreateJurusan extends Migration
 {
     public function up()
     {
@@ -12,24 +12,25 @@ class CreateRoles extends Migration
             'id' => [
                 'type' => 'int',
                 'unsigned' => true,
-                'auto_increment' => true
+                'auto_increment' => true,
             ],
-            'role_name' => [
+            'nama_jurusan' => [
                 'type' => 'varchar',
                 'constraint' => 128,
             ],
-            'description' => [
+            'deskripsi' => [
                 'type' => 'varchar',
                 'constraint' => 128,
                 'null' => true,
             ],
         ]);
+
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('roles');
+        $this->forge->createTable('jurusan');
     }
 
     public function down()
     {
-        $this->forge->dropTable('roles');
+        $this->forge->dropTable('jurusan', false, true);
     }
 }

@@ -35,6 +35,13 @@ $routes->get('/', 'Home::index');
 $routes->get('/login', 'Auth::login');
 $routes->get('/register', 'Auth::register');
 
+
+// Route for delete items
+$routes->delete('admin/users/roles/(:num)', 'Admin\Users\Roles::delete/$1');
+$routes->delete('admin/users/main/(:num)', 'Admin\Users\Main::delete/$1');
+
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
