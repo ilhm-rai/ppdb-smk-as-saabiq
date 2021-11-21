@@ -87,42 +87,52 @@ class Main extends BaseController
     session()->setFlashdata('message', 'User baru berhasil ditambahkan!');
     return redirect()->to('/admin/users/main');
   }
-
-
   // Edit data
   public function edit($id)
   {
     $data = [
-      'title'  => 'Edit User | PPDB SMK As-Saabiq',
+      'title'  => 'Edit User | sportpedia',
       'active' => 'admin-users',
       'validation' => \Config\Services::validation(),
-      'user'  => $this->usersModel->getWhere(['id' => $id])->getRowArray(),
+      'user'  => $this->usersModel->getUserById($id),
+      'roles' => $this->rolesModel->get()->getResultArray()
     ];
+    // dd($data);
     return view('dashboard/admin/users/main/edit', $data);
   }
 
   public function update($id)
   {
+
     $user = $this->usersModel->getWhere(['id' => $id])->getRowArray();
-    $username = $this->request->getVar('username');
     $email = $this->request->getVar('email');
-    if ($user['username'] == $username) {
-      $usernameRules = 'required|alpha_numeric_space|min_length[3]|max_length[30]';
+    $username = $this->request->getVar('username');
+
+    $rules = [];
+
+    if ($email == $user['email']) {
+      $rules['email'] = 'required|valid_email';
     } else {
-      $usernameRules = 'required|alpha_numeric_space|min_length[3]|max_length[30]|is_unique[users.username]';
+      $rules['email'] = 'required|valid_email|is_unique[users.email]';
     }
-    if ($user['email'] == $email) {
-      $emailRules = 'required|valid_email';
+    if ($username == $user['username']) {
+      $rules['username'] = 'required|alpha_numeric_space|min_length[3]|max_length[30]';
     } else {
-      $emailRules = 'required|valid_email|is_unique[users.email]';
+      $rules['username'] = 'required|alpha_numeric_space|min_length[3]|max_length[30]|is_unique[users.username]';
     }
 
-    if (!$this->validate([
-      'username' => $usernameRules,
-      'email'    => $emailRules,
-      'password'     => 'required|strong_password',
-      'pass_confirm' => 'required|matches[password]',
-    ])) {
+
+    $pass = $this->request->getVar('password');
+    if ($pass) {
+      $rules['password'] = 'strong_password';
+      $rules['pass_confirm'] = 'matches[password]';
+      $password = password_hash($pass, PASSWORD_DEFAULT);
+    } else {
+      $password = $user['password_hash'];
+    }
+
+
+    if (!$this->validate($rules)) {
       return redirect()->to('/admin/users/main/edit/' . $id)->withInput()->with('errors', $this->validator->getErrors());
     }
 
@@ -130,17 +140,17 @@ class Main extends BaseController
       'id' => $id,
       'username' => $username,
       'email' => $email,
-      'password_hash' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+      'password_hash' => $password,
       'active' => 1
     ]);
 
-    $user = $this->usersModel->getWhere(['email' => $this->request->getVar('email')])->getRowArray();
+    $aguId = $this->groupsUsersModel->getWhere(['user_id' => $id])->getRowArray();
     $this->groupsUsersModel->save([
+      'id' => $aguId,
       'group_id' => $this->request->getVar('role-id'),
-      'user_id' => $user['id'],
     ]);
 
-    session()->setFlashdata('message', 'User baru berhasil ditambahkan!');
+    session()->setFlashdata('message', 'Data user berhasil diubah!');
     return redirect()->to('/admin/users/main');
   }
   // End Edit

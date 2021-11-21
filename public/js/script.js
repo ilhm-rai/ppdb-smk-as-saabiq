@@ -19,7 +19,7 @@ const flashData = $(".flash-data").data("flashdata");
 if (flashData) {
   Swal.fire({
     icon: "success",
-    title: "Sportpedia",
+    title: "PPPDB SMK AS-SAABIQ",
     text: flashData,
     showConfirmButton: false,
     timer: 1500,
