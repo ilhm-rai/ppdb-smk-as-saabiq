@@ -4,15 +4,18 @@ namespace App\Controllers\Admin\Users;
 
 use App\Controllers\BaseController;
 use App\Models\RolesModel;
+use App\Models\UsersModel;
 
 class Roles extends BaseController
 {
   protected $roleModel;
+  protected $usersModel;
 
 
   public function __construct()
   {
     $this->rolesModel = new RolesModel();
+    $this->usersModel = new UsersModel();
   }
 
 
@@ -35,6 +38,7 @@ class Roles extends BaseController
       'title'  => 'Detail Role | Sportpedia',
       'active' => 'admin-users',
       'role' => $this->rolesModel->getWhere(['id' => $id])->getRowArray(),
+      'users' => $this->usersModel->getUsersByRole($id),
     ];
     // dd($data);
     return view('dashboard/admin/users/roles/detail', $data);
@@ -55,7 +59,7 @@ class Roles extends BaseController
     if (!$this->validate([
       'name' => 'required'
     ])) {
-      return redirect()->to('/admin/users/roles/add')->withInput();
+      return redirect()->to('/admin/users/roles/add')->withInput()->with('errors', $this->validator->getErrors());
     }
     $this->rolesModel->save([
       'name' => $this->request->getVar('name'),
@@ -83,7 +87,7 @@ class Roles extends BaseController
     if (!$this->validate([
       'name' => 'required',
     ])) {
-      return redirect()->to('/admin/users/roles/edit/' . $id)->withInput();
+      return redirect()->to('/admin/users/roles/edit/' . $id)->withInput()->with('errors', $this->validator->getErrors());
     }
     $this->rolesModel->save([
       'id'    => $id,

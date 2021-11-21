@@ -27,29 +27,53 @@
         <textarea class="form-control" id="description" name="description" rows="4" readonly><?= $role['description']; ?></textarea>
       </div>
     </div>
-
   </form>
+
   <div class="table-responsive">
-    <table class="table table-bordered td-align-middle" id="dataVendors" width="100%" cellspacing="0">
+    <table class="table table-bordered" id="dataUsers" cellspacing="0">
       <thead>
         <tr>
           <th>No</th>
-          <th width='100px'>Logo</th>
-          <th>Vendor Name</th>
-          <th>Service</th>
-          <!-- <th>Owner</th> -->
-          <th>Action</th>
+          <th>Foto Profile</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Aksi</th>
         </tr>
       </thead>
       <tfoot>
         <tr>
           <th>No</th>
-          <th>Logo</th>
-          <th>Vendor Name</th>
-          <th>Service</th>
-          <!-- <th>Owner</th> -->
-          <th>Action</th>
+          <th>Foto Profile</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Aksi</th>
         </tr>
+        <tbody>
+          <?php $i = 1; ?>
+          <?php foreach ($users as $user) : ?>
+            <tr>
+              <td><?= $i++; ?></td>
+              <td><img width="50" src="/img/users/<?= $user['user_image']; ?>" alt="<?= $user['username']; ?> Image"></td>
+              <td><?= $user['username']; ?></td>
+              <td><?= $user['email']; ?></td>
+              <td><?= $user['role_name']; ?></td>
+              <td><?= $user['active']; ?></td>
+              <td class="text-center">
+                <a href="/admin/users/main/detail/<?= $user['id']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></a>
+                <a href="/admin/users/main/edit/<?= $user['id']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></a>
+                <form action="/admin/users/main/<?= $user['id']; ?>" method="POST" class="d-inline form-delete">
+                  <?= csrf_field(); ?>
+                  <input type="hidden" name="_method" value="DELETE">
+                  <button type="submit" class="btn btn-action btn-sm small mb-1 btn-delete"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete</span></span></button>
+                </form>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
       </tfoot>
       <tbody>
       </tbody>

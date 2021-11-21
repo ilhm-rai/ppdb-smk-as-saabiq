@@ -16,7 +16,7 @@
       <?= session()->getFlashdata('message'); ?>
     </div>
   <?php endif; ?>
-  <div class="container-fluid table-responsive">
+  <div class="table-responsive">
     <table class="table table-bordered" id="dataUsers" cellspacing="0">
       <thead>
         <tr>

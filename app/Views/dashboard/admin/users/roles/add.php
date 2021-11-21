@@ -14,7 +14,7 @@
     <div class="form-group row">
       <label for="name" class="col-sm-2 col-form-label">Name Role</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control form-control-user <?= ($validation->hasError('name') ? 'is-invalid' : ''); ?>" id="name" name="name" placeholder="Nama role...">
+        <input type="text" class="form-control form-control-user <?= (session('errors.name') ? 'is-invalid' : ''); ?>" id="name" name="name" placeholder="Nama role...">
         <div class="invalid-feedback">
           <?= $validation->getError('name'); ?>
         </div>
