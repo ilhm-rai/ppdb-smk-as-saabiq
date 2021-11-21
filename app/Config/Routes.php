@@ -40,6 +40,7 @@ $routes->get('/register', 'Auth::register');
 $routes->delete('admin/users/roles/(:num)', 'Admin\Users\Roles::delete/$1');
 $routes->delete('admin/users/main/(:num)', 'Admin\Users\Main::delete/$1');
 $routes->delete('admin/jurusan/(:num)', 'Admin\Jurusan::delete/$1');
+$routes->delete('admin/jalur/(:num)', 'Admin\Jalur::delete/$1');
 
 
 

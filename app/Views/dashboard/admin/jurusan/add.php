@@ -16,7 +16,7 @@
       <div class="col-sm-10">
         <input type="text" class="form-control form-control-user <?= (session('errors.nama') ? 'is-invalid' : ''); ?>" id="nama" name="nama" placeholder="Nama Jurusan..." value="<?= old('nama'); ?>">
         <div class="invalid-feedback">
-          <?= $validation->getError('name'); ?>
+          <?= $validation->getError('nama'); ?>
         </div>
       </div>
     </div>

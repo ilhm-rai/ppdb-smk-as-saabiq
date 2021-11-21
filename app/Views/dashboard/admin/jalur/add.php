@@ -6,24 +6,24 @@
 <!-- Page Heading -->
 <section class="py-5">
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h3 class="content-heading mb-0 text-gray-800">Tambah Role</h3>
+    <h3 class="content-heading mb-0 text-gray-800">Tambah Jalur Registrasi</h3>
   </div>
 
-  <form action="/admin/users/roles/save" method="post" class="user">
+  <form action="/admin/jalur/save" method="post" class="user">
     <?= csrf_field(); ?>
     <div class="form-group row">
-      <label for="name" class="col-sm-2 col-form-label">Name Role</label>
+      <label for="nama" class="col-sm-2 col-form-label">Nama Jalur</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control form-control-user <?= ($validation->hasError('name') ? 'is-invalid' : ''); ?>" id="name" name="name" placeholder="Nama role...">
+        <input type="text" class="form-control form-control-user <?= (session('errors.nama') ? 'is-invalid' : ''); ?>" id="nama" name="nama" placeholder="Nama Jalur..." value="<?= (old('nama') ? old('nama') : ''); ?>">
         <div class="invalid-feedback">
-          <?= $validation->getError('name'); ?>
+          <?= $validation->getError('nama'); ?>
         </div>
       </div>
     </div>
     <div class="form-group row">
-      <label for="description" class="col-sm-2 col-form-label">Deskripsi</label>
+      <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
       <div class="col-sm-10">
-        <textarea class="form-control" id="description" name="description" rows="4"></textarea>
+        <textarea class="form-control" id="deskripsi" name="deskripsi" rows="4"><?= (old('deskripsi') ? old('deskripsi') : ''); ?></textarea>
       </div>
     </div>
     <button type="submit" class="btn btn-warning btn-user btn-sm">Save</button>
