@@ -22,7 +22,7 @@ class Roles extends BaseController
   public function index()
   {
     $data = [
-      'title'  => 'Role User | Sportpedia',
+      'title'  => 'Role User | PPDB SMK As-Saabiq',
       'active' => 'admin-users',
       'roles'  => $this->rolesModel->getAllRoles()
     ];
@@ -35,7 +35,7 @@ class Roles extends BaseController
   public function detail($id)
   {
     $data = [
-      'title'  => 'Detail Role | Sportpedia',
+      'title'  => 'Detail Role | PPDB SMK As-Saabiq',
       'active' => 'admin-users',
       'role' => $this->rolesModel->getWhere(['id' => $id])->getRowArray(),
       'users' => $this->usersModel->getUsersByRole($id),
@@ -48,7 +48,7 @@ class Roles extends BaseController
   public function add()
   {
     $data = [
-      'title'  => 'Tambah Roles | Sportpedia',
+      'title'  => 'Tambah Roles | PPDB SMK As-Saabiq',
       'active' => 'admin-users',
       'validation' => \Config\Services::validation(),
     ];
@@ -74,7 +74,7 @@ class Roles extends BaseController
   public function edit($id)
   {
     $data = [
-      'title'  => 'Edit Olahraga | sportpedia',
+      'title'  => 'Edit Olahraga | PPDB SMK As-Saabiq',
       'active' => 'admin-users',
       'validation' => \Config\Services::validation(),
       'role'  => $this->rolesModel->getWhere(['id' => $id])->getRowArray(),

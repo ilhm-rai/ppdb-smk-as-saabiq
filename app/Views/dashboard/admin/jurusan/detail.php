@@ -4,8 +4,8 @@
 <?= $this->section('content'); ?>
 <section class="py-5">
   <div class="d-sm-flex align-items-center justify-content-between">
-    <h3 class="content-heading mb-0 text-gray-800">Detail Role</h3>
-    <a href="/admin/users/roles/edit/<?= $role['id']; ?>" class="d-block d-sm-inline-block btn rounded-pill btn-warning"><i class="fas fa-plus-square mr-1"></i> Edit Olahraga</a>
+    <h3 class="content-heading mb-0 text-gray-800">Detail Jurusan</h3>
+    <a href="/admin/jurusan/edit/<?= $jurusan['id']; ?>" class="d-block d-sm-inline-block btn rounded-pill btn-warning"><i class="fas fa-plus-square mr-1"></i> Edit Jurusan</a>
   </div>
   <div class="flash-data" data-flashdata="<?= session()->getFlashdata('message'); ?>"></div>
   <?php if (session()->getFlashdata('message')) : ?>
@@ -13,43 +13,47 @@
       <?= session()->getFlashdata('message'); ?>
     </div>
   <?php endif; ?>
-  <form action="/admin/users/roles/update/<?= $role['id']; ?>" method="post" class="user mt-4">
+  <form action="/admin/jurusan/update/<?= $jurusan['id']; ?>" method="post" class="user mt-4">
     <?= csrf_field(); ?>
     <div class="form-group row">
-      <label for="name" class="col-sm-2 col-form-label">Nama Role</label>
+      <label for="name" class="col-sm-2 col-form-label">Nama Jurusan</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="Service Name" value="<?= (old('name')) ? old('name') : $role['name']; ?>" readonly>
+        <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="Service Name" value="<?= (old('name')) ? old('name') : $jurusan['nama_jurusan']; ?>" readonly>
       </div>
     </div>
     <div class="form-group row">
-      <label for="description" class="col-sm-2 col-form-label">Description</label>
+      <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
       <div class="col-sm-10">
-        <textarea class="form-control" id="description" name="description" rows="4" readonly><?= $role['description']; ?></textarea>
+        <textarea class="form-control" id="deskripsi" name="deskripsi" rows="4" readonly><?= $jurusan['deskripsi']; ?></textarea>
       </div>
     </div>
-
   </form>
+
+
   <div class="table-responsive">
-    <table class="table table-bordered td-align-middle" id="dataVendors" width="100%" cellspacing="0">
+    <table class="table table-bordered" id="dataUsers" cellspacing="0">
       <thead>
         <tr>
           <th>No</th>
-          <th width='100px'>Logo</th>
-          <th>Vendor Name</th>
-          <th>Service</th>
-          <!-- <th>Owner</th> -->
-          <th>Action</th>
+          <th>Foto Profile</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Aksi</th>
         </tr>
       </thead>
       <tfoot>
         <tr>
           <th>No</th>
-          <th>Logo</th>
-          <th>Vendor Name</th>
-          <th>Service</th>
-          <!-- <th>Owner</th> -->
-          <th>Action</th>
+          <th>Foto Profile</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Aksi</th>
         </tr>
+
       </tfoot>
       <tbody>
       </tbody>

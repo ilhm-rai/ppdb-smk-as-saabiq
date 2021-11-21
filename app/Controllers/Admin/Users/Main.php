@@ -91,7 +91,7 @@ class Main extends BaseController
   public function edit($id)
   {
     $data = [
-      'title'  => 'Edit User | sportpedia',
+      'title'  => 'Edit User | PPDB SMK As-Saabiq',
       'active' => 'admin-users',
       'validation' => \Config\Services::validation(),
       'user'  => $this->usersModel->getUserById($id),

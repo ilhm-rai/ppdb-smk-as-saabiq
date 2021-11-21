@@ -6,7 +6,7 @@
 <!-- Page Heading -->
 <section class="py-5">
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h3 class="content-heading mb-0 text-gray-800">Edit Role</h3>
+    <h3 class="content-heading mb-0 text-gray-800">Edit Jurusan</h3>
   </div>
   <div class="flash-data" data-flashdata="<?= session()->getFlashdata('message'); ?>"></div>
 
@@ -15,21 +15,21 @@
       <?= session()->getFlashdata('message'); ?>
     </div>
   <?php endif; ?>
-  <form action="/admin/users/roles/update/<?= $role['id']; ?>" method="post" class="user">
+  <form action="/admin/jurusan/update/<?= $jurusan['id']; ?>" method="post" class="user">
     <?= csrf_field(); ?>
     <div class="form-group row">
-      <label for="name" class="col-sm-2 col-form-label">Nama Roles</label>
+      <label for="nama" class="col-sm-2 col-form-label">Nama Jurusan</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control form-control-user <?= ($validation->hasError('name') ? 'is-invalid' : ''); ?>" id="name" name="name" placeholder="Service Name" value="<?= (old('name')) ? old('name') : $role['name']; ?>">
+        <input type="text" class="form-control form-control-user <?= (session('errors.nama') ? 'is-invalid' : ''); ?>" id="nama" name="nama" placeholder="Nama Jurursan" value="<?= (old('nama')) ? old('nama') : $jurusan['nama_jurusan']; ?>">
         <div class="invalid-feedback">
-          <?= $validation->getError('name'); ?>
+          <?= $validation->getError('nama'); ?>
         </div>
       </div>
     </div>
     <div class="form-group row">
-      <label for="description" class="col-sm-2 col-form-label">Deskripsi</label>
+      <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
       <div class="col-sm-10">
-        <textarea class="form-control" id="description" name="description" rows="4"><?= $role['description']; ?></textarea>
+        <textarea class="form-control" id="deskripsi" name="deskripsi" rows="4"><?= $jurusan['deskripsi']; ?></textarea>
       </div>
     </div>
     <div class="form-group">
