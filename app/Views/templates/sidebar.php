@@ -46,7 +46,7 @@
   <!-- Nav Item Jalur Registrasi -->
   <li class="nav-item">
     <a class="nav-link" href="<?= base_url('admin/jalur'); ?>">
-      <i class="fas fa-fw fa-graduation-cap"></i>
+      <i class="fas fa-fw fa-clipboard-list"></i>
       <span>Jalur Registrasi</span></a>
   </li>
 
@@ -60,16 +60,41 @@
 
   <!-- Nav Item - Dashboard -->
   <li class="nav-item">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="/siswa/dashboard">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span></a>
   </li>
 
   <!-- Nav Item - Tables -->
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="/siswa/identitas">
       <i class="fas fa-fw fa-user"></i>
-      <span>Data Diri</span></a>
+      <span>Identitas Diri</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/siswa/ortu">
+      <i class="fas fa-fw fa-user"></i>
+      <span>Data Orang Tua</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/siswa/akademik">
+      <i class="fas fa-fw fa-user"></i>
+      <span>Data Akademik</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/siswa/nilai">
+      <i class="fas fa-fw fa-user"></i>
+      <span>Data Nilai</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/siswa/prestasi">
+      <i class="fas fa-fw fa-user"></i>
+      <span>Prestasi</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/siswa/dokumen">
+      <i class="fas fa-fw fa-user"></i>
+      <span>Dokumen Pendukung</span></a>
   </li>
 
   <!-- Divider -->
