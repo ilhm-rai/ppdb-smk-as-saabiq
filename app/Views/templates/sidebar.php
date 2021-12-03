@@ -35,6 +35,12 @@
       </div>
     </div>
   </li>
+  <!-- Nav Tahun Akademik -->
+  <li class="nav-item">
+    <a class="nav-link" href="<?= base_url('admin/tahun'); ?>">
+      <i class="fas fa-fw fa-graduation-cap"></i>
+      <span>Tahun Akademik</span></a>
+  </li>
 
   <!-- Nav Item Jurusan -->
   <li class="nav-item">
@@ -42,6 +48,7 @@
       <i class="fas fa-fw fa-graduation-cap"></i>
       <span>Data Jurusan</span></a>
   </li>
+
 
   <!-- Nav Item Jalur Registrasi -->
   <li class="nav-item">
@@ -66,6 +73,11 @@
   </li>
 
   <!-- Nav Item - Tables -->
+  <li class="nav-item">
+    <a class="nav-link" href="/siswa/identitas">
+      <i class="fas fa-fw fa-user"></i>
+      <span>Registrasi</span></a>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="/siswa/identitas">
       <i class="fas fa-fw fa-user"></i>
