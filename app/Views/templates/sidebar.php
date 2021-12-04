@@ -21,7 +21,7 @@
       <span>Dashboard</span></a>
   </li>
 
-  <!-- Nav Item - Pages Collapse Menu -->
+  <!-- Nav Item User - Pages Collapse Menu -->
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">
       <i class="fas fa-fw fa-user"></i>
@@ -38,9 +38,10 @@
   <!-- Nav Tahun Akademik -->
   <li class="nav-item">
     <a class="nav-link" href="<?= base_url('admin/tahun'); ?>">
-      <i class="fas fa-fw fa-graduation-cap"></i>
+      <i class="fas fa-fw fa-calendar-alt"></i>
       <span>Tahun Akademik</span></a>
   </li>
+
 
   <!-- Nav Item Jurusan -->
   <li class="nav-item">
@@ -53,9 +54,16 @@
   <!-- Nav Item Jalur Registrasi -->
   <li class="nav-item">
     <a class="nav-link" href="<?= base_url('admin/jalur'); ?>">
-      <i class="fas fa-fw fa-clipboard-list"></i>
+      <i class="fas fa-fw fa-map-signs"></i>
       <span>Jalur Registrasi</span></a>
   </li>
+  <!-- Nav Item Registrasi -->
+  <li class="nav-item">
+    <a class="nav-link" href="<?= base_url('admin/registrasi'); ?>">
+      <i class="fas fa-fw fa-address-card"></i>
+      <span>Registrasi</span></a>
+  </li>
+
 
   <!-- Divider -->
   <hr class="sidebar-divider">
@@ -74,10 +82,11 @@
 
   <!-- Nav Item - Tables -->
   <li class="nav-item">
-    <a class="nav-link" href="/siswa/identitas">
-      <i class="fas fa-fw fa-user"></i>
+    <a class="nav-link" href="/siswa/registrasi">
+      <i class="fas fa-fw fa-address-card"></i>
       <span>Registrasi</span></a>
   </li>
+
   <li class="nav-item">
     <a class="nav-link" href="/siswa/identitas">
       <i class="fas fa-fw fa-user"></i>
@@ -85,27 +94,27 @@
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/siswa/ortu">
-      <i class="fas fa-fw fa-user"></i>
+      <i class="fas fa-fw fa-users"></i>
       <span>Data Orang Tua</span></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/siswa/akademik">
-      <i class="fas fa-fw fa-user"></i>
+      <i class="fas fa-fw fa-graduation-cap"></i>
       <span>Data Akademik</span></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/siswa/nilai">
-      <i class="fas fa-fw fa-user"></i>
+      <i class="fas fa-fw fa-clipboard-list"></i>
       <span>Data Nilai</span></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/siswa/prestasi">
-      <i class="fas fa-fw fa-user"></i>
+      <i class="fas fa-fw fa-trophy"></i>
       <span>Prestasi</span></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/siswa/dokumen">
-      <i class="fas fa-fw fa-user"></i>
+      <i class="fas fa-fw fa-file-alt"></i>
       <span>Dokumen Pendukung</span></a>
   </li>
 

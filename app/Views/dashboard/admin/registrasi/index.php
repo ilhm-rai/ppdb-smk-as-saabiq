@@ -5,9 +5,11 @@
 
 <!-- Page Heading -->
 <section class="py-5">
+
+
+  <!-- ====== -->
   <div class="d-sm-flex align-items-center justify-content-between">
-    <h3 class="content-heading mb-0 text-gray-800">Tahun Akademik</h3>
-    <a href="/admin/tahun/add" class="d-block d-sm-inline-block btn rounded-pill btn-warning"><i class="fas fa-plus-square mr-1"></i>Tahun Akademik Baru</a>
+    <h3 class="content-heading mb-0 text-gray-800">Registrasi</h3>
   </div>
   <div class="flash-data" data-flashdata="<?= session()->getFlashdata('message'); ?>"></div>
 
@@ -16,41 +18,50 @@
       <?= session()->getFlashdata('message'); ?>
     </div>
   <?php endif; ?>
-  <div class="container-fluid table-responsive">
+  <div class="table-responsive">
     <table class="table table-bordered" id="dataUsers" cellspacing="0">
       <thead>
         <tr>
           <th>No</th>
-          <th>Tahun Akademik</th>
+          <th>Nomor Registrasi</th>
+          <th>Username</th>
+          <th>Tahun</th>
           <th>Status</th>
-          <th>Aksi</th>
+          <th>Jalur</th>
         </tr>
       </thead>
       <tfoot>
         <tr>
           <th>No</th>
-          <th>Tahun Akademik</th>
+          <th>Nomor Registrasi</th>
+          <th>Username</th>
+          <th>Tahun</th>
           <th>Status</th>
-          <th>Aksi</th>
+          <th>Jalur</th>
         </tr>
         <tbody>
           <?php $i = 1; ?>
-          <?php foreach ($tahun as $t) : ?>
+          <?php foreach ($registrasi as $r) : ?>
             <tr>
               <td><?= $i++; ?></td>
-              <td><?= $t['tahun']; ?></td>
+              <td><?= $r['nomor_registrasi']; ?></td>
+              <td><?= $r['user_id']; ?></td>
+              <td><?= $r['tahun_id']; ?></td>
+              <td><?= $r['jalur_id']; ?></td>
               <td>
-                <?php if ($t['active'] == 1) : ?>
-                  <button class="btn btn-success btn-sm">Aktif</button>
+                <?php if ($r['status'] == 'Diterima') : ?>
+                  <button class="btn btn-success btn-sm"><?= $r['status']; ?></button>
+                <?php elseif ($r['status'] == 'Pending') : ?>
+                  <button class="btn btn-warning btn-sm"><?= $r['status']; ?></button>
                 <?php else : ?>
-                  <button class="btn btn-danger btn-sm">Non-Aktif</button>
+                  <button class="btn btn-danger btn-sm"><?= $r['status']; ?></button>
                 <?php endif; ?>
               </td>
 
               <td class="text-center">
-                <a href="/admin/tahun/detail/<?= $t['id']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></a>
-                <a href="/admin/tahun/edit/<?= $t['id']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></a>
-                <form action="/admin/tahun/<?= $t['id']; ?>" method="POST" class="d-inline form-delete">
+
+                <a href="/admin/registrasi/assessment/<?= $r['id']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Assessment</span></a>
+                <form action="/admin/registrasi/<?= $r['id']; ?>" method="POST" class="d-inline form-delete">
                   <?= csrf_field(); ?>
                   <input type="hidden" name="_method" value="DELETE">
                   <button type="submit" class="btn btn-action btn-sm small mb-1 btn-delete"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete</span></span></button>
@@ -66,12 +77,4 @@
   </div>
 
 </section>
-<?= $this->endSection(); ?>
-
-<?= $this->section('script'); ?>
-<script>
-  $(document).ready(function() {
-    $('#dataUsers').DataTable();
-  });
-</script>
 <?= $this->endSection(); ?>
