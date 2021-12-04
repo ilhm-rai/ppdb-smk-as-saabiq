@@ -72,8 +72,8 @@
       <div class="col-9">
         <select class="custom-select" id="jenis-kelamin" name="jenis-kelamin">
           <option selected>Pilih salah satu...</option>
-          <option <?= ($identitas['jenis_kelamin'] == 'Laki-laki') ? 'selected' : ''; ?> value="Laki-laki">Laki-laki</option>
-          <option <?= ($identitas['jenis_kelamin'] == 'Perempuan') ? 'selected' : ''; ?> value="Perempuan">Perempuan</option>
+          <option <?= ($identitas && $identitas['jenis_kelamin'] == 'Laki-laki') ? 'selected' : ''; ?> value="Laki-laki">Laki-laki</option>
+          <option <?= ($identitas && $identitas['jenis_kelamin'] == 'Perempuan') ? 'selected' : ''; ?> value="Perempuan">Perempuan</option>
         </select>
       </div>
     </div>
@@ -100,12 +100,12 @@
       <div class="col-9">
         <select class="custom-select" id="agama" name="agama">
           <option selected>Pilih salah satu...</option>
-          <option <?= ($identitas['agama'] == 'Islam') ? 'selected' : ''; ?> value="Islam">Islam</option>
-          <option <?= ($identitas['agama'] == 'Kristen') ? 'selected' : ''; ?> value="Kristen">Kristen</option>
-          <option <?= ($identitas['agama'] == 'Katolik') ? 'selected' : ''; ?> value="Katolik">Katolik</option>
-          <option <?= ($identitas['agama'] == 'Hindu') ? 'selected' : ''; ?> value="Hindu">Hindu</option>
-          <option <?= ($identitas['agama'] == 'Buddha') ? 'selected' : ''; ?> value="Buddha">Buddha</option>
-          <option <?= ($identitas['agama'] == 'Konghucu') ? 'selected' : ''; ?> value="Konghucu">Konghucu</option>
+          <option <?= ($identitas && $identitas['agama'] == 'Islam') ? 'selected' : ''; ?> value="Islam">Islam</option>
+          <option <?= ($identitas && $identitas['agama'] == 'Kristen') ? 'selected' : ''; ?> value="Kristen">Kristen</option>
+          <option <?= ($identitas && $identitas['agama'] == 'Katolik') ? 'selected' : ''; ?> value="Katolik">Katolik</option>
+          <option <?= ($identitas && $identitas['agama'] == 'Hindu') ? 'selected' : ''; ?> value="Hindu">Hindu</option>
+          <option <?= ($identitas && $identitas['agama'] == 'Buddha') ? 'selected' : ''; ?> value="Buddha">Buddha</option>
+          <option <?= ($identitas && $identitas['agama'] == 'Konghucu') ? 'selected' : ''; ?> value="Konghucu">Konghucu</option>
         </select>
       </div>
     </div>
