@@ -25,6 +25,16 @@ if (flashData) {
     timer: 1500,
   });
 }
+const flashDataError = $(".flash-data-error").data("flashdata");
+if (flashDataError) {
+  Swal.fire({
+    icon: "error",
+    title: "PPPDB SMK AS-SAABIQ",
+    text: flashDataError,
+    showConfirmButton: true,
+    // timer: 3000,
+  });
+}
 // >>>>AlertDanger
 $(".btn-delete").on("click", function (e) {
   e.preventDefault();

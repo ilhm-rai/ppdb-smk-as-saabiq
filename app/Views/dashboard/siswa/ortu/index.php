@@ -22,7 +22,7 @@
     <div class="form-group row">
       <label for="nama-ayah" class="col-3 col-form-label">Nama Ayah</label>
       <div class="col-9">
-        <input type="text" class="form-control form-control-user <?= ($validation->hasError('nama-ayah') ? 'is-invalid' : ''); ?>" id="nama-ayah" name="nama-ayah" value="<?= ($ortu) ? $ortu['nama_ayah'] : ''; ?>">
+        <input type="text" class="form-control form-control-user <?= ($validation->hasError('nama-ayah') ? 'is-invalid' : ''); ?>" id="nama-ayah" name="nama-ayah" value="<?= ($ortu) ? $ortu['nama_ayah'] : ''; ?>" <?= (registered()) ? 'readonly' : ''; ?>>
         <div class="invalid-feedback">
           <?= $validation->getError('nama-ayah'); ?>
         </div>
@@ -31,7 +31,7 @@
     <div class="form-group row">
       <label for="pekerjaan-ayah" class="col-3 col-form-label">Pekerjaan Ayah</label>
       <div class="col-9">
-        <input type="text" class="form-control form-control-user <?= ($validation->hasError('pekerjaan-ayah') ? 'is-invalid' : ''); ?>" id="pekerjaan-ayah" name="pekerjaan-ayah" value="<?= ($ortu) ? $ortu['pekerjaan_ayah'] : ''; ?>">
+        <input type="text" class="form-control form-control-user <?= ($validation->hasError('pekerjaan-ayah') ? 'is-invalid' : ''); ?>" id="pekerjaan-ayah" name="pekerjaan-ayah" value="<?= ($ortu) ? $ortu['pekerjaan_ayah'] : ''; ?>" <?= (registered()) ? 'readonly' : ''; ?>>
         <div class="invalid-feedback">
           <?= $validation->getError('pekerjaan-ayah'); ?>
         </div>
@@ -40,7 +40,7 @@
     <div class="form-group row">
       <label for="penghasilan-ayah" class="col-3 col-form-label">Penghasilan Ayah</label>
       <div class="col-9">
-        <select class="custom-select" id="penghasilan-ayah" name="penghasilan-ayah">
+        <select class="custom-select" id="penghasilan-ayah" name="penghasilan-ayah" <?= (registered()) ? 'desabled' : ''; ?>>
           <option selected>Pilih salah satu...</option>
           <option <?= ($ortu && $ortu['penghasilan_ayah'] == '< 3.000.000') ? 'selected' : ''; ?> value="< 3.000.000">
             < 3.000.000 </option>
@@ -53,7 +53,7 @@
     <div class="form-group row">
       <label for="nama-ibu" class="col-3 col-form-label">Nama Ibu</label>
       <div class="col-9">
-        <input type="text" class="form-control form-control-user <?= ($validation->hasError('nama-ibu') ? 'is-invalid' : ''); ?>" id="nama-ibu" name="nama-ibu" value="<?= ($ortu) ? $ortu['nama_ibu'] : ''; ?>">
+        <input type="text" class="form-control form-control-user <?= ($validation->hasError('nama-ibu') ? 'is-invalid' : ''); ?>" id="nama-ibu" name="nama-ibu" value="<?= ($ortu) ? $ortu['nama_ibu'] : ''; ?>" <?= (registered()) ? 'readonly' : ''; ?>>
         <div class="invalid-feedback">
           <?= $validation->getError('nama-ibu'); ?>
         </div>
@@ -62,7 +62,7 @@
     <div class="form-group row">
       <label for="pekerjaan-ibu" class="col-3 col-form-label">Pekerjaan Ibu</label>
       <div class="col-9">
-        <input type="text" class="form-control form-control-user <?= ($validation->hasError('pekerjaan-ibu') ? 'is-invalid' : ''); ?>" id="pekerjaan-ibu" name="pekerjaan-ibu" value="<?= ($ortu) ? $ortu['pekerjaan_ibu'] : ''; ?>">
+        <input type="text" class="form-control form-control-user <?= ($validation->hasError('pekerjaan-ibu') ? 'is-invalid' : ''); ?>" id="pekerjaan-ibu" name="pekerjaan-ibu" value="<?= ($ortu) ? $ortu['pekerjaan_ibu'] : ''; ?>" <?= (registered()) ? 'readonly' : ''; ?>>
         <div class="invalid-feedback">
           <?= $validation->getError('pekerjaan-ibu'); ?>
         </div>
@@ -71,7 +71,7 @@
     <div class="form-group row">
       <label for="penghasilan-ibu" class="col-3 col-form-label">Penghasilan Ibu</label>
       <div class="col-9">
-        <select class="custom-select" id="penghasilan-ibu" name="penghasilan-ibu">
+        <select class="custom-select" id="penghasilan-ibu" name="penghasilan-ibu" <?= (registered()) ? 'disabled' : ''; ?>>
           <option selected>Pilih salah satu...</option>
           <option <?= ($ortu && $ortu['penghasilan_ibu'] == '< 3.000.000') ? 'selected' : ''; ?> value="< 3.000.000">
             < 3.000.000 </option>
@@ -84,7 +84,7 @@
     <div class="form-group row">
       <label for="nama-wali" class="col-3 col-form-label">Nama Wali</label>
       <div class="col-9">
-        <input type="text" class="form-control form-control-user <?= ($validation->hasError('nama-wali') ? 'is-invalid' : ''); ?>" id="nama-wali" name="nama-wali" value="<?= ($ortu) ? $ortu['nama_wali'] : ''; ?>">
+        <input type="text" class="form-control form-control-user <?= ($validation->hasError('nama-wali') ? 'is-invalid' : ''); ?>" id="nama-wali" name="nama-wali" value="<?= ($ortu) ? $ortu['nama_wali'] : ''; ?>" <?= (registered()) ? 'readonly' : ''; ?>>
         <div class="invalid-feedback">
           <?= $validation->getError('nama-wali'); ?>
         </div>
@@ -93,7 +93,7 @@
     <div class="form-group row">
       <label for="pekerjaan-wali" class="col-3 col-form-label">Pekerjaan Wali</label>
       <div class="col-9">
-        <input type="text" class="form-control form-control-user <?= ($validation->hasError('pekerjaan-wali') ? 'is-invalid' : ''); ?>" id="pekerjaan-wali" name="pekerjaan-wali" value="<?= ($ortu) ? $ortu['pekerjaan_wali'] : ''; ?>">
+        <input type="text" class="form-control form-control-user <?= ($validation->hasError('pekerjaan-wali') ? 'is-invalid' : ''); ?>" id="pekerjaan-wali" name="pekerjaan-wali" value="<?= ($ortu) ? $ortu['pekerjaan_wali'] : ''; ?>" <?= (registered()) ? 'readonly' : ''; ?>>
         <div class="invalid-feedback">
           <?= $validation->getError('pekerjaan-wali'); ?>
         </div>
@@ -102,7 +102,7 @@
     <div class="form-group row">
       <label for="penghasilan-wali" class="col-3 col-form-label">Penghasilan Wali</label>
       <div class="col-9">
-        <select class="custom-select" id="penghasilan-wali" name="penghasilan-wali">
+        <select class="custom-select" id="penghasilan-wali" name="penghasilan-wali" <?= (registered()) ? 'disabled' : ''; ?>>
           <option selected value="">Pilih salah satu...</option>
           <option <?= ($ortu && $ortu['penghasilan_wali'] == '< 3.000.000') ? 'selected' : ''; ?> value="< 3.000.000">
             < 3.000.000 </option>
@@ -115,7 +115,7 @@
     <div class="form-group row">
       <label for="kondisi-keluarga" class="col-3 col-form-label">Kondisi Keluarga</label>
       <div class="col-9">
-        <select class="custom-select" id="kondisi-keluarga" name="kondisi-keluarga">
+        <select class="custom-select" id="kondisi-keluarga" name="kondisi-keluarga" <?= (registered()) ? 'disabled' : ''; ?>>
           <option selected>Pilih salah satu...</option>
           <option <?= ($ortu && $ortu['kondisi_keluarga'] == 'Lengkap') ? 'selected' : ''; ?> value="Lengkap">Lengkap</option>
           <option <?= ($ortu && $ortu['kondisi_keluarga'] == 'Meninggal') ? 'selected' : ''; ?> value="Meninggal">Meninggal</option>
@@ -124,9 +124,9 @@
         </select>
       </div>
     </div>
-
-    <button type="submit" class="btn btn-warning btn-user btn-sm">Simpan</button>
-
+    <?php if (!registered()) : ?>
+      <button type="submit" class="btn btn-warning btn-user btn-sm">Simpan</button>
+    <?php endif; ?>
   </form>
 </section>
 <?= $this->endSection(); ?>

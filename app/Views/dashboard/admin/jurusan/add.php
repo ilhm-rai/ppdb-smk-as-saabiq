@@ -12,11 +12,20 @@
   <form action="/admin/jurusan/save" method="post" class="user">
     <?= csrf_field(); ?>
     <div class="form-group row">
-      <label for="nama" class="col-sm-2 col-form-label">Name Jurusan</label>
+      <label for="nama" class="col-sm-2 col-form-label">Nama Jurusan</label>
       <div class="col-sm-10">
         <input type="text" class="form-control form-control-user <?= (session('errors.nama') ? 'is-invalid' : ''); ?>" id="nama" name="nama" placeholder="Nama Jurusan..." value="<?= old('nama'); ?>">
         <div class="invalid-feedback">
           <?= $validation->getError('nama'); ?>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="kode" class="col-sm-2 col-form-label">Kode Jurusan</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control form-control-user <?= (session('errors.kode') ? 'is-invalid' : ''); ?>" id="kode" name="kode" placeholder="Kode Jurusan..." value="<?= old('kode'); ?>">
+        <div class="invalid-feedback">
+          <?= $validation->getError('kode'); ?>
         </div>
       </div>
     </div>

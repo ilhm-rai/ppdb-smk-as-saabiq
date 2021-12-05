@@ -51,12 +51,14 @@ class Jurusan extends BaseController
   public function save()
   {
     if (!$this->validate([
-      'nama' => 'required'
+      'nama' => 'required',
+      'kode' => 'required'
     ])) {
       return redirect()->to('/admin/jurusan/add')->withInput()->with('errors', $this->validator->getErrors());
     }
     $this->jurusanModel->save([
       'nama_jurusan' => $this->request->getVar('nama'),
+      'kode' => strtoupper($this->request->getVar('kode')),
       'deskripsi' => $this->request->getVar('deskripsi'),
     ]);
     session()->setFlashdata('message', 'Jurusan baru berhasil ditambahkan!');
@@ -80,12 +82,14 @@ class Jurusan extends BaseController
   {
     if (!$this->validate([
       'nama' => 'required',
+      'kode' => 'required',
     ])) {
       return redirect()->to('/admin/jurusan/edit/' . $id)->withInput()->with('errors', $this->validator->getErrors());
     }
     $this->jurusanModel->save([
       'id'    => $id,
       'nama_jurusan' => $this->request->getVar('nama'),
+      'kode' => strtoupper($this->request->getVar('kode')),
       'deskripsi' => $this->request->getVar('deskripsi'),
     ]);
     session()->setFlashdata('message', 'Data jurusan berhasil diubah!');
