@@ -21,4 +21,14 @@ class RegistrasiModel extends Model
 ";
     return $this->db->query($query)->getRowArray();
   }
+  public function getAmountRegistrasiByTahun()
+  {
+    $query = "SELECT COUNT(`r`.`id`) as `amount`
+    FROM `registrasi` AS `r`
+    JOIN `tahun_akademik` AS `t`
+    ON `r`.`tahun_id` = `t`.`id`
+    WHERE `t`.`active`= 1
+";
+    return $this->db->query($query)->getRowArray();
+  }
 }

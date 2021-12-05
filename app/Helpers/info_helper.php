@@ -40,3 +40,46 @@ function registered()
   }
   return false;
 }
+
+
+// Requirement
+function myIdetity()
+{
+  $identitasModel = Model('IdentitasModel');
+  $myIdetitas = $identitasModel->getWhere(['user_id' => user()->id])->getRowArray();
+  if ($myIdetitas) {
+    return true;
+  }
+}
+function myOrtu()
+{
+  $ortuModel = Model('OrtuModel');
+  $myOrtu = $ortuModel->getWhere(['user_id' => user()->id])->getRowArray();
+  if ($myOrtu) {
+    return true;
+  }
+}
+function myAkademik()
+{
+  $akademikModel = Model('AkademikModel');
+  $myAkademik = $akademikModel->getWhere(['user_id' => user()->id])->getRowArray();
+  if ($myAkademik) {
+    return true;
+  }
+}
+
+function progress_requirement()
+{
+  $amountRequirement = 5;
+  $myProgress = 0;
+  if (myIdetity()) {
+    $myProgress++;
+  }
+  if (myOrtu()) {
+    $myProgress++;
+  }
+  if (myAkademik()) {
+    $myProgress++;
+  }
+  return ($myProgress / $amountRequirement * 100);
+}
