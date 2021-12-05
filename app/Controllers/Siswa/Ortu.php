@@ -34,8 +34,6 @@ class Ortu extends BaseController
       'pekerjaan-ibu' => 'required',
       'penghasilan-ibu' => 'required',
       'kondisi-keluarga' => 'required',
-
-
     ])) {
       return redirect()->to('/siswa/identitas')->withInput()->with('errors', $this->validator->getErrors());
     }
