@@ -159,3 +159,14 @@ a {
   top: 1em;
   right: 1.5em;
 }
+
+.btn-action
+ {
+  background-color: #e6e5e5;
+  color: #808090;
+  font-weight: 500;
+}
+
+.btn-action:hover {
+  background-color: #d8d6d6;
+}
