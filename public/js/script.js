@@ -59,7 +59,11 @@ function previewImg(input, preview) {
   };
 }
 
-
+$(document).ready(function () {
+  $('.custom-file-input').change((el) => {
+    $(`input[type=file][name=${el.target.name}] + .custom-file-label`).html(el.target.files[0].name);
+  });
+});
 
 // event ketika keyword di tulis
 $("#keyword").on("keyup keydown", function () {
