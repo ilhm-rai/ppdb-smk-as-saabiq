@@ -2,12 +2,11 @@
 
 <!-- End Banner -->
 <?= $this->section('content'); ?>
-
 <!-- Page Heading -->
 <section class="py-3 mb-4">
   <div class="d-sm-flex align-items-center justify-content-between">
     <h3 class="content-heading mb-0 text-gray-800">Prestasi</h3>
-    <a href="/admin/banner/add" class="d-block d-sm-inline-block btn rounded-pill btn-warning"><i class="fas fa-plus-square mr-1"></i>Tambah Prestasi</a>
+    <a href="/siswa/prestasi/add" class="d-block d-sm-inline-block btn rounded-pill btn-warning"><i class="fas fa-plus-square mr-1"></i>Tambah Prestasi</a>
   </div>
   <div class="flash-data" data-flashdata="<?= session()->getFlashdata('message'); ?>"></div>
 
@@ -27,9 +26,34 @@
           <th>Penyelenggara</th>
           <th>Tahun</th>
           <th>File</th>
-          <th>Aksi</th>
+          <th width="20%">Aksi</th>
         </tr>
       </thead>
+      <tbody>
+        <?php
+        $no = 1;
+        foreach ($awards as $data) :
+        ?>
+          <tr>
+            <td><?= $no++; ?></td>
+            <td><?= $data->nama_prestasi; ?></td>
+            <td><?= $data->peringkat; ?></td>
+            <td><?= $data->tingkat; ?></td>
+            <td><?= $data->penyelenggara; ?></td>
+            <td><?= $data->tahun; ?></td>
+            <td><a href="/doc/siswa/sertifikat/<?= $data->file_sertifikat; ?>" target="_blank"><?= strlen($data->file_sertifikat) > 10 ? substr($data->file_sertifikat, 0, 10) . "..." : $data->file_sertifikat; ?></a></td>
+            <td>
+              <a href="/siswa/prestasi/detail/<?= $data->id; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></a>
+              <a href="/siswa/prestasi/edit/<?= $data->id; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></a>
+              <form action="/siswa/prestasi/<?= $data->id; ?>" method="POST" class="d-inline form-delete">
+                <?= csrf_field(); ?>
+                <?= form_hidden('_method', 'DELETE'); ?>
+                <button type="submit" class="btn btn-action btn-sm small mb-1 btn-delete"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete</span></span></button>
+              </form>
+            </td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
       <tfoot>
         <tr>
           <th>No</th>
