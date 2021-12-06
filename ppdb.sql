@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Des 2021 pada 14.32
+-- Waktu pembuatan: 06 Des 2021 pada 17.51
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.11
 
@@ -117,7 +117,10 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (2, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-11-07 03:59:04', 1),
 (3, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-02 16:04:39', 1),
 (4, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-03 06:53:46', 1),
-(5, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-04 05:35:22', 1);
+(5, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-04 05:35:22', 1),
+(6, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-04 20:48:40', 1),
+(7, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-05 06:37:57', 1),
+(8, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-06 10:46:00', 1);
 
 -- --------------------------------------------------------
 
@@ -174,17 +177,48 @@ CREATE TABLE `auth_users_permissions` (
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `banner`
+--
+
+CREATE TABLE `banner` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `title` varchar(128) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `active` int(1) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `banner`
+--
+
+INSERT INTO `banner` (`id`, `user_id`, `title`, `image`, `link`, `active`, `created_at`, `updated_at`) VALUES
+(2, 0, 'Test', '1.png', '', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `data_akademik`
 --
 
 CREATE TABLE `data_akademik` (
   `id` int(10) UNSIGNED NOT NULL,
-  `nisn` varchar(11) NOT NULL,
+  `nisn` varchar(128) NOT NULL,
   `asal_sekolah` varchar(128) NOT NULL,
-  `no_ijazah` varchar(11) NOT NULL,
-  `nis` varchar(11) NOT NULL,
+  `no_ijazah` varchar(128) NOT NULL,
+  `nis` varchar(128) NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `data_akademik`
+--
+
+INSERT INTO `data_akademik` (`id`, `nisn`, `asal_sekolah`, `no_ijazah`, `nis`, `user_id`) VALUES
+(2, '0000875088', 'SMP Negeri 1 Tasikmalaya', 'DN-Ma/13 020025801', '151610287', 1);
 
 -- --------------------------------------------------------
 
@@ -197,6 +231,7 @@ CREATE TABLE `data_ortu` (
   `kondisi_keluarga` text NOT NULL,
   `nama_wali` varchar(128) NOT NULL,
   `pekerjaan_wali` varchar(128) NOT NULL,
+  `penghasilan_wali` varchar(128) NOT NULL,
   `nama_ibu` varchar(128) NOT NULL,
   `pekerjaan_ibu` varchar(128) NOT NULL,
   `penghasilan_ibu` varchar(128) NOT NULL,
@@ -205,6 +240,13 @@ CREATE TABLE `data_ortu` (
   `penghasilan_ayah` varchar(128) NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `data_ortu`
+--
+
+INSERT INTO `data_ortu` (`id`, `kondisi_keluarga`, `nama_wali`, `pekerjaan_wali`, `penghasilan_wali`, `nama_ibu`, `pekerjaan_ibu`, `penghasilan_ibu`, `nama_ayah`, `pekerjaan_ayah`, `penghasilan_ayah`, `user_id`) VALUES
+(1, 'Lengkap', '', '', '', 'Enur Nurjanah', 'Ibu Rumah Tangga', '< 3.000.000', 'Undang', 'Dagang', '3.000.000 - 5.000.000', 1);
 
 -- --------------------------------------------------------
 
@@ -256,6 +298,13 @@ CREATE TABLE `identitas_diri` (
   `alamat` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data untuk tabel `identitas_diri`
+--
+
+INSERT INTO `identitas_diri` (`id`, `user_id`, `nama`, `no_kk`, `nik`, `tempat_lahir`, `tgl_lahir`, `jenis_kelamin`, `anak_ke`, `jml_anak`, `agama`, `alamat`) VALUES
+(5, 1, 'Muhamad arsaludin', '3206321864600008', '3206321864600012', 'Tasikmalaya', '2000-06-14 00:00:00', 'Laki-laki', '1', '3', 'Islam', 'Nusawangi, Cisayong, Kab. Tasikmalaya');
+
 -- --------------------------------------------------------
 
 --
@@ -284,6 +333,7 @@ INSERT INTO `jalur_registrasi` (`id`, `nama_jalur`, `deskripsi`) VALUES
 
 CREATE TABLE `jurusan` (
   `id` int(10) UNSIGNED NOT NULL,
+  `kode` varchar(4) NOT NULL,
   `nama_jurusan` varchar(128) NOT NULL,
   `deskripsi` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -292,12 +342,12 @@ CREATE TABLE `jurusan` (
 -- Dumping data untuk tabel `jurusan`
 --
 
-INSERT INTO `jurusan` (`id`, `nama_jurusan`, `deskripsi`) VALUES
-(1, 'Rekayasa Perangkat Lunak', NULL),
-(2, 'Teknik Komputer dan Jaringan', NULL),
-(3, 'Teknik Sepeda Motor', NULL),
-(4, 'Administrasi Perkantoran', NULL),
-(5, 'Akuntansi', NULL);
+INSERT INTO `jurusan` (`id`, `kode`, `nama_jurusan`, `deskripsi`) VALUES
+(1, 'RPL', 'Rekayasa Perangkat Lunak', NULL),
+(2, 'TKJ', 'Teknik Komputer dan Jaringan', NULL),
+(3, 'TSM', 'Teknik Sepeda Motor', NULL),
+(4, 'AP', 'Administrasi Perkantoran', NULL),
+(5, 'AK', 'Akuntansi', NULL);
 
 -- --------------------------------------------------------
 
@@ -383,6 +433,7 @@ CREATE TABLE `registrasi` (
   `nomor_registrasi` varchar(20) NOT NULL,
   `status` enum('Diterima','Ditolak','Pending') NOT NULL DEFAULT 'Pending',
   `jalur_id` int(10) UNSIGNED NOT NULL,
+  `jurusan_id` int(11) NOT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -391,8 +442,8 @@ CREATE TABLE `registrasi` (
 -- Dumping data untuk tabel `registrasi`
 --
 
-INSERT INTO `registrasi` (`id`, `user_id`, `tahun_id`, `nomor_registrasi`, `status`, `jalur_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '0001', 'Pending', 1, '2021-12-04 18:49:25', '2021-12-04 19:04:02');
+INSERT INTO `registrasi` (`id`, `user_id`, `tahun_id`, `nomor_registrasi`, `status`, `jalur_id`, `jurusan_id`, `created_at`, `updated_at`) VALUES
+(3, 1, 1, 'REG-RPL-20163754', 'Pending', 1, 1, '2021-12-05 03:07:05', '2021-12-05 03:07:05');
 
 -- --------------------------------------------------------
 
@@ -515,6 +566,13 @@ ALTER TABLE `auth_users_permissions`
   ADD KEY `user_id_permission_id` (`user_id`,`permission_id`);
 
 --
+-- Indeks untuk tabel `banner`
+--
+ALTER TABLE `banner`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indeks untuk tabel `data_akademik`
 --
 ALTER TABLE `data_akademik`
@@ -589,7 +647,8 @@ ALTER TABLE `registrasi`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `jalur_id` (`jalur_id`),
   ADD KEY `tahun_id` (`tahun_id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `jurusan_id` (`jurusan_id`);
 
 --
 -- Indeks untuk tabel `tahun_akademik`
@@ -631,7 +690,7 @@ ALTER TABLE `auth_groups_users`
 -- AUTO_INCREMENT untuk tabel `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_permissions`
@@ -652,16 +711,22 @@ ALTER TABLE `auth_tokens`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT untuk tabel `banner`
+--
+ALTER TABLE `banner`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT untuk tabel `data_akademik`
 --
 ALTER TABLE `data_akademik`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `data_ortu`
 --
 ALTER TABLE `data_ortu`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `dokumen`
@@ -679,7 +744,7 @@ ALTER TABLE `hasil_seleksi`
 -- AUTO_INCREMENT untuk tabel `identitas_diri`
 --
 ALTER TABLE `identitas_diri`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `jalur_registrasi`
@@ -691,7 +756,7 @@ ALTER TABLE `jalur_registrasi`
 -- AUTO_INCREMENT untuk tabel `jurusan`
 --
 ALTER TABLE `jurusan`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
@@ -715,7 +780,7 @@ ALTER TABLE `prestasi`
 -- AUTO_INCREMENT untuk tabel `registrasi`
 --
 ALTER TABLE `registrasi`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tahun_akademik`

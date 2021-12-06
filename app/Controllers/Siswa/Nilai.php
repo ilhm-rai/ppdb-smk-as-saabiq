@@ -10,7 +10,8 @@ class Nilai extends BaseController
 {
   protected $nilaiModel;
 
-  public function __construct() {
+  public function __construct()
+  {
     $this->nilaiModel = new NilaiModel();
   }
 
