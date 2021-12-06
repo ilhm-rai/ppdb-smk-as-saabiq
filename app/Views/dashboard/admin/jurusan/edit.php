@@ -27,6 +27,15 @@
       </div>
     </div>
     <div class="form-group row">
+      <label for="kode" class="col-sm-2 col-form-label">Kode Jurusan</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control form-control-user <?= (session('errors.kode') ? 'is-invalid' : ''); ?>" id="kode" name="kode" placeholder="Kode Jurursan" value="<?= (old('kode')) ? old('kode') : $jurusan['kode']; ?>">
+        <div class="invalid-feedback">
+          <?= $validation->getError('kode'); ?>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
       <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
       <div class="col-sm-10">
         <textarea class="form-control" id="deskripsi" name="deskripsi" rows="4"><?= $jurusan['deskripsi']; ?></textarea>

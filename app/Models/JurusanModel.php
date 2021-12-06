@@ -7,5 +7,5 @@ use CodeIgniter\Model;
 class JurusanModel extends Model
 {
   protected $table = 'jurusan';
-  protected $allowedFields = ['nama_jurusan', 'deskripsi'];
+  protected $allowedFields = ['nama_jurusan', 'kode', 'deskripsi'];
 }

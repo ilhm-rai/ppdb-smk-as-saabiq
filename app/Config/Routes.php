@@ -42,6 +42,7 @@ $routes->delete('admin/users/main/(:num)', 'Admin\Users\Main::delete/$1');
 $routes->delete('admin/jurusan/(:num)', 'Admin\Jurusan::delete/$1');
 $routes->delete('admin/jalur/(:num)', 'Admin\Jalur::delete/$1');
 $routes->delete('admin/tahun/(:num)', 'Admin\Tahun::delete/$1');
+$routes->delete('admin/banner/(:num)', 'Admin\Banner::delete/$1');
 $routes->delete('siswa/prestasi/(:num)', 'Siswa\Prestasi::delete/$1');
 
 // Route for update items

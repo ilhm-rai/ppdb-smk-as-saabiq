@@ -21,6 +21,7 @@
       <thead>
         <tr>
           <th>No</th>
+          <th>Kode Jurusan</th>
           <th>Nama Jurusan</th>
           <th>Aksi</th>
         </tr>
@@ -28,6 +29,7 @@
       <tfoot>
         <tr>
           <th>No</th>
+          <th>Kode Jurusan</th>
           <th>Nama Jurusan</th>
           <th>Aksi</th>
         </tr>
@@ -36,6 +38,7 @@
           <?php foreach ($jurusan as $j) : ?>
             <tr>
               <td><?= $i++; ?></td>
+              <td><?= $j['kode']; ?></td>
               <td><?= $j['nama_jurusan']; ?></td>
               <td class="text-center">
                 <a href="/admin/jurusan/detail/<?= $j['id']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></a>

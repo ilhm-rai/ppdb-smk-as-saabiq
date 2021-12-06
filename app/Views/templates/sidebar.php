@@ -20,6 +20,11 @@
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span></a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<?= base_url('admin/banner'); ?>">
+      <i class="fas fa-fw fa-bullhorn"></i>
+      <span>Banner Informasi</span></a>
+  </li>
 
   <!-- Nav Item User - Pages Collapse Menu -->
   <li class="nav-item">
