@@ -50,7 +50,7 @@ class Prestasi extends BaseController
     $sertifikat = $this->request->getFile('sertifikat');
 
     $sertifikatName = $sertifikat->getRandomName();
-    $sertifikat->move('doc/siswa/sertifikat', $sertifikatName);
+    $sertifikat->move('doc/sertifikat', $sertifikatName);
 
     $this->prestasiModel->save([
       'nama_prestasi' => $this->request->getPost('nama_prestasi'),
@@ -100,7 +100,7 @@ class Prestasi extends BaseController
     if (!($sertifikat->getError() === 4)) {
       unlink('doc/siswa/sertifikat/' . $sertifikatName);
       $sertifikatName = $sertifikat->getRandomName();
-      $sertifikat->move('doc/siswa/sertifikat', $sertifikatName);
+      $sertifikat->move('doc/sertifikat', $sertifikatName);
     }
 
     $this->prestasiModel->update($id, [
