@@ -17,17 +17,18 @@ class Nilai extends BaseController
 
   public function index()
   {
-    $nilai = $this->nilaiModel->getWhere(['user_id' => user_id()]);
     $data = [
       'title' => 'Data Nilai | PPDB SMK As-Saabiq',
       'validation' => \Config\Services::validation(),
-      'nilai' => $nilai->getRow()
+      'nilai' => @$this->nilaiModel->where('user_id', user_id())->findAll()[0]
     ];
     return view('dashboard/siswa/nilai/index', $data);
   }
 
   public function save()
   {
+    $nilai = @$this->nilaiModel->where('user_id', user_id())->findAll()[0];
+
     if (!$this->validate([
       'matematika' => 'required|less_than_equal_to[100]|is_natural|integer',
       'ipa' => 'required|less_than_equal_to[100]|is_natural|integer',
@@ -56,6 +57,8 @@ class Nilai extends BaseController
       'user_id' => user_id()
     ];
     // dd($data);
+
+    $nilai ? $data['id'] = $nilai->id : '';
 
     $this->nilaiModel->save($data);
 

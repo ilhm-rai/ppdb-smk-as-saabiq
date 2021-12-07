@@ -10,5 +10,5 @@
 <script src="<?= base_url('js/bootstrap-datetimepicker.js'); ?>"></script>
 <script src="<?= base_url('js/jquery.dataTables.min.js'); ?>"></script>
 <script src="<?= base_url('js/dataTables.bootstrap4.min.js'); ?>"></script>
-<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-QD_c2mAionu-LIuk"></script>
+<!-- <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-QD_c2mAionu-LIuk"></script> -->
 <script src="<?= base_url('js/script.js'); ?>"></script>
