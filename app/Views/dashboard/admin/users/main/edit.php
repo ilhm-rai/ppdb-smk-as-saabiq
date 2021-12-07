@@ -47,29 +47,6 @@
     </div>
 
 
-
-    <div class="form-group row">
-      <label for="password" class="col-sm-2 col-form-label">Password<sup class="text-danger font-weight-bold">*</sup></label>
-      <div class="col-sm-10">
-        <div class="form-group row">
-          <div class="col-sm-6 mb-2">
-            <i class="visible fas fa-eye-slash"></i>
-            <input type="password" class="form-control form-control-user <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" name="password" id="password" placeholder="Password" autocomplete="off">
-            <div class="invalid-feedback">
-              <?= $validation->getError('password'); ?>
-            </div>
-          </div>
-          <div class="col-sm-6 mb-2">
-            <i class="visible fas fa-eye-slash"></i>
-            <input type="password" class="form-control form-control-user <?php if (session('errors.pass_confirm')) : ?>is-invalid<?php endif ?>" name="pass_confirm" id="pass_confirm" placeholder="Repeat Password" autocomplete="off">
-            <div class="invalid-feedback">
-              <?= $validation->getError('pass_confirm'); ?>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <button type="submit" class="btn btn-warning btn-user btn-sm">Save</button>
     <a href="/admin/users/main" class="btn btn-secondary btn-user btn-sm">Cancel</a>
   </form>

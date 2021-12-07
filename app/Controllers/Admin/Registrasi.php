@@ -5,17 +5,35 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 use App\Models\RegistrasiModel;
 use App\Models\TahunAkademikModel;
+use App\Models\IdentitasModel;
+use App\Models\OrtuModel;
+use App\Models\AkademikModel;
+use App\Models\NilaiModel;
+use App\Models\PrestasiModel;
+use App\Models\DokumenModel;
 
 class Registrasi extends BaseController
 {
   protected $registrasiModel;
   protected $tahunAkademikModel;
+  protected $identitasModel;
+  protected $ortuModel;
+  protected $akademikModel;
+  protected $nilaiModel;
+  protected $prestasiModel;
+  protected $dokumenModel;
 
 
   public function __construct()
   {
     $this->registrasiModel = new RegistrasiModel();
     $this->tahunAkademikModel = new TahunAkademikModel();
+    $this->identitasModel = new IdentitasModel();
+    $this->ortuModel = new ortuModel();
+    $this->akademikModel = new akademikModel();
+    $this->nilaiModel = new nilaiModel();
+    $this->prestasiModel = new prestasiModel();
+    $this->dokumenModel = new dokumenModel();
   }
 
   public function index()
@@ -23,84 +41,37 @@ class Registrasi extends BaseController
     $data = [
       'title' => 'Registrasi | PPDB SMK As-Saabiq',
       'tahun' => $this->tahunAkademikModel->get()->getResultArray(),
-      'registrasi' => $this->registrasiModel->get()->getResultArray(),
+      'registrasi' => $this->registrasiModel->getRegistrasiByTahunActive(),
     ];
+    // dd($data);
     return view('dashboard/admin/registrasi/index', $data);
   }
 
-
-  // detail
-  public function detail($id)
+  public function assessment($id)
   {
     $data = [
-      'title'  => 'Detail Jalur | PPDB SMK As-Saabiq',
-      'active' => 'admin-jalur',
-      'jalur' => $this->jalurRegistrasiModel->getWhere(['id' => $id])->getRowArray(),
+      'title' => 'Registrasi | PPDB SMK As-Saabiq',
+      'registrasi' => $this->registrasiModel->getRegistrasiById($id),
+      'validation' => \Config\Services::validation(),
     ];
     // dd($data);
-    return view('dashboard/admin/jalur/detail', $data);
+    $data['identitas'] = $this->identitasModel->getWhere(['user_id' => $data['registrasi']['user_id']])->getRowArray();
+    $data['ortu'] = $this->ortuModel->getWhere(['user_id' => $data['registrasi']['user_id']])->getRowArray();
+    $data['akademik'] = $this->akademikModel->getWhere(['user_id' => $data['registrasi']['user_id']])->getRowArray();
+    $data['nilai'] = $this->nilaiModel->getWhere(['user_id' => $data['registrasi']['user_id']])->getRow();
+    $data['awards'] = $this->prestasiModel->getWhere(['user_id' => $data['registrasi']['user_id']])->getResult();
+    $data['document'] = $this->dokumenModel->getWhere(['user_id' => $data['registrasi']['user_id']])->getRowArray();
+    // dd($data);
+    return view('dashboard/admin/registrasi/assessment', $data);
   }
 
-  // Add Data
-  public function add()
+  public function approve($id)
   {
-    $data = [
-      'title'  => 'Tambah Jalur | PPDB SMK As-Saabiq',
-      'active' => 'admin-jalur',
-      'validation' => \Config\Services::validation(),
-    ];
-    return view('dashboard/admin/jalur/add', $data);
-  }
-  public function save()
-  {
-    if (!$this->validate([
-      'nama' => 'required'
-    ])) {
-      return redirect()->to('/admin/jalur/add')->withInput()->with('errors', $this->validator->getErrors());
-    }
-    $this->jalurRegistrasiModel->save([
-      'nama_jalur' => $this->request->getVar('nama'),
-      'deskripsi' => $this->request->getVar('deskripsi'),
+    $this->registrasiModel->save([
+      'id' => $id,
+      'status' => 'Diterima'
     ]);
-    session()->setFlashdata('message', 'Jalur registrasi baru berhasil ditambahkan!');
-    return redirect()->to('/admin/jalur');
-  }
-
-
-  // Edit data
-  public function edit($id)
-  {
-    $data = [
-      'title'  => 'Edit Jalur | PPDB SMK As-Saabiq',
-      'active' => 'admin-jalur',
-      'validation' => \Config\Services::validation(),
-      'jalur'  => $this->jalurRegistrasiModel->getWhere(['id' => $id])->getRowArray(),
-    ];
-    return view('dashboard/admin/jalur/edit', $data);
-  }
-
-  public function update($id)
-  {
-    if (!$this->validate([
-      'nama' => 'required',
-    ])) {
-      return redirect()->to('/admin/jalur/edit/' . $id)->withInput()->with('errors', $this->validator->getErrors());
-    }
-    $this->jalurRegistrasiModel->save([
-      'id'    => $id,
-      'nama_jalur' => $this->request->getVar('nama'),
-      'deskripsi' => $this->request->getVar('deskripsi'),
-    ]);
-    session()->setFlashdata('message', 'Data jalur registrasi berhasil diubah!');
-    return redirect()->to('/admin/jalur');
-  }
-  // End Edit
-
-  // Delete jurusan
-  public function delete($id)
-  {
-    $this->jalurRegistrasiModel->delete($id);
-    session()->setFlashdata('message', 'Data jalur registrasi berhasil dihapus!');
-    return redirect()->to('/admin/jalur');
+    session()->setFlashdata('message', 'Data registrasi diterima!');
+    return redirect()->to('/admin/registrasi/' . $id);
   }
 }

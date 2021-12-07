@@ -1,13 +1,9 @@
 <?= $this->extend('templates/dashboard'); ?>
 
-<!-- End Banner -->
 <?= $this->section('content'); ?>
 
 <!-- Page Heading -->
 <section class="py-5">
-
-
-  <!-- ====== -->
   <div class="d-sm-flex align-items-center justify-content-between">
     <h3 class="content-heading mb-0 text-gray-800">Registrasi</h3>
   </div>
@@ -24,20 +20,22 @@
         <tr>
           <th>No</th>
           <th>Nomor Registrasi</th>
-          <th>Username</th>
+          <th>Nama</th>
           <th>Tahun</th>
-          <th>Status</th>
           <th>Jalur</th>
+          <th>Status</th>
+          <th>Aksi</th>
         </tr>
       </thead>
       <tfoot>
         <tr>
           <th>No</th>
           <th>Nomor Registrasi</th>
-          <th>Username</th>
+          <th>Nama</th>
           <th>Tahun</th>
-          <th>Status</th>
           <th>Jalur</th>
+          <th>Status</th>
+          <th>Aksi</th>
         </tr>
         <tbody>
           <?php $i = 1; ?>
@@ -45,22 +43,12 @@
             <tr>
               <td><?= $i++; ?></td>
               <td><?= $r['nomor_registrasi']; ?></td>
-              <td><?= $r['user_id']; ?></td>
-              <td><?= $r['tahun_id']; ?></td>
-              <td><?= $r['jalur_id']; ?></td>
-              <td>
-                <?php if ($r['status'] == 'Diterima') : ?>
-                  <button class="btn btn-success btn-sm"><?= $r['status']; ?></button>
-                <?php elseif ($r['status'] == 'Pending') : ?>
-                  <button class="btn btn-warning btn-sm"><?= $r['status']; ?></button>
-                <?php else : ?>
-                  <button class="btn btn-danger btn-sm"><?= $r['status']; ?></button>
-                <?php endif; ?>
-              </td>
-
+              <td><?= $r['nama']; ?></td>
+              <td><?= $r['tahun']; ?></td>
+              <td><?= $r['nama_jalur']; ?></td>
+              <td><?= $r['status']; ?></td>
               <td class="text-center">
-
-                <a href="/admin/registrasi/assessment/<?= $r['id']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Assessment</span></a>
+                <a href="/admin/registrasi/assessment/<?= $r['id']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Assessment</span></a>
                 <form action="/admin/registrasi/<?= $r['id']; ?>" method="POST" class="d-inline form-delete">
                   <?= csrf_field(); ?>
                   <input type="hidden" name="_method" value="DELETE">
@@ -77,4 +65,13 @@
   </div>
 
 </section>
+<?= $this->endSection(); ?>
+
+
+<?= $this->section('script'); ?>
+<script>
+  $(document).ready(function() {
+    $('#dataUsers').DataTable();
+  });
+</script>
 <?= $this->endSection(); ?>

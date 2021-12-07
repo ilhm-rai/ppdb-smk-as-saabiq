@@ -30,35 +30,7 @@
   </form>
 
 
-  <div class="table-responsive">
-    <table class="table table-bordered" id="dataUsers" cellspacing="0">
-      <thead>
-        <tr>
-          <th>No</th>
-          <th>Foto Profile</th>
-          <th>Username</th>
-          <th>Email</th>
-          <th>Role</th>
-          <th>Status</th>
-          <th>Aksi</th>
-        </tr>
-      </thead>
-      <tfoot>
-        <tr>
-          <th>No</th>
-          <th>Foto Profile</th>
-          <th>Username</th>
-          <th>Email</th>
-          <th>Role</th>
-          <th>Status</th>
-          <th>Aksi</th>
-        </tr>
 
-      </tfoot>
-      <tbody>
-      </tbody>
-    </table>
-  </div>
 </section>
 <?= $this->endSection(); ?>
 

@@ -40,7 +40,7 @@
     <div class="form-group row">
       <label for="penghasilan-ayah" class="col-3 col-form-label">Penghasilan Ayah</label>
       <div class="col-9">
-        <select class="custom-select" id="penghasilan-ayah" name="penghasilan-ayah" <?= (registered()) ? 'desabled' : ''; ?>>
+        <select class="custom-select" id="penghasilan-ayah" name="penghasilan-ayah" <?= (registered()) ? 'disabled' : ''; ?>>
           <option selected>Pilih salah satu...</option>
           <option <?= ($ortu && $ortu['penghasilan_ayah'] == '< 3.000.000') ? 'selected' : ''; ?> value="< 3.000.000">
             < 3.000.000 </option>

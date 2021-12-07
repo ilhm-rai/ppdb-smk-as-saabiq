@@ -53,6 +53,23 @@ $(".btn-delete").on("click", function (e) {
   });
 });
 
+$(".btn-cencel").on("click", function (e) {
+  e.preventDefault();
+  Swal.fire({
+    title: "Apakah Anda Yakin?",
+    text: " Akan Membatalkan Pendaftaran",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $(this).unbind("click").click();
+    }
+  });
+});
+
 //preview image input
 
 // preview img

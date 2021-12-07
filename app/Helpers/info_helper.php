@@ -1,5 +1,7 @@
 <?php
 
+use CodeIgniter\Model;
+
 function info_user()
 {
   if (logged_in()) {
@@ -8,27 +10,6 @@ function info_user()
     return $user;
   }
 }
-
-function requirements_complete()
-{
-  if (logged_in()) {
-    // $usersModel = Model('UsersModel');
-    $identitasModel = Model('IdentitasModel');
-    $ortuModel = Model('OrtuModel');
-    $akademikModel = Model('AkademikModel');
-
-    $myIdetitas = $identitasModel->getWhere(['user_id' => user()->id])->getRowArray();
-    $myOrtu = $ortuModel->getWhere(['user_id' => user()->id])->getRowArray();
-    $myAkademik = $akademikModel->getWhere(['user_id' => user()->id])->getRowArray();
-    if ($myIdetitas && $myOrtu && $myAkademik) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-}
-
-
 // Requirement
 function myIdetity()
 {
@@ -72,7 +53,7 @@ function myPrestasi()
 }
 function myDocument()
 {
-  $documentModel = Model('DocumentModel');
+  $documentModel = Model('DokumenModel');
   $myDocument = $documentModel->getWhere(['user_id' => user()->id])->getResultArray();
   if ($myDocument) {
     return true;
@@ -95,12 +76,26 @@ function progress_requirement()
   if (myNilai()) {
     $myProgress++;
   }
+  if (myDocument()) {
+    $myProgress++;
+  }
   return ($myProgress / $amountRequirement * 100);
 }
 
-function registered()
+function requirements_complete()
 {
   if (progress_requirement() == 100) {
+    return true;
+  }
+  return false;
+}
+
+
+function registered()
+{
+  $registrasiModel = Model('RegistrasiModel');
+  $myRegistrasi = $registrasiModel->getWhere(['user_id' => user_id()])->getRowArray();
+  if ($myRegistrasi) {
     return true;
   }
   return false;

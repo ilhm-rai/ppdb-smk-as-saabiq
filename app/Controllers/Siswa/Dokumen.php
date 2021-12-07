@@ -32,10 +32,10 @@ class Dokumen extends BaseController
 
     $rules = [
       'foto' => 'max_size[documents.foto,5024]|ext_in[documents.foto,png,jpg,jpeg]',
-      'kartu_nisn' => 'max_size[documents.kartu_nisn,5024]|ext_in[documents.kartu_nisn,png,jpg,jpeg]',
-      'rapor' => 'max_size[documents.rapor,5024]|ext_in[documents.rapor,png,jpg,jpeg]',
-      'ijazah' => 'max_size[documents.ijazah,5024]|ext_in[documents.ijazah,png,jpg,jpeg]',
-      'kk' => 'max_size[documents.kk,5024]|ext_in[documents.kk,png,jpg,jpeg]',
+      'kartu_nisn' => 'max_size[documents.kartu_nisn,5024]|ext_in[documents.kartu_nisn,png,jpg,jpeg,pdf]',
+      'rapor' => 'max_size[documents.rapor,5024]|ext_in[documents.rapor,png,jpg,jpeg,pdf]',
+      'ijazah' => 'max_size[documents.ijazah,5024]|ext_in[documents.ijazah,png,jpg,jpeg,pdf]',
+      'kk' => 'max_size[documents.kk,5024]|ext_in[documents.kk,png,jpg,jpeg,pdf]',
     ];
 
     if (!$dokumen) {
@@ -52,15 +52,15 @@ class Dokumen extends BaseController
 
 
     if ($imagefile = $this->request->getFiles()) {
-      foreach ($imagefile['documents'] as $key => $img) {
-        if ($img->isValid() && !$img->hasMoved()) {
-          $data[$key] = $img->getRandomName();
-          if ($dokumen) if ($dokumen[$key] !== $data[$key]) unlink("img/$key/$dokumen[$key]");
-          $img->move('img/' . $key, $data[$key]);
+      foreach ($imagefile['documents'] as $key => $file) {
+        var_dump($file);
+        if ($file->isValid() && !$file->hasMoved()) {
+          $data[$key] = $file->getRandomName();
+          if ($dokumen) if ($dokumen[$key] !== $data[$key]) unlink("doc/siswa/$key/$dokumen[$key]");
+          $file->move('doc/siswa/' . $key, $data[$key]);
         }
       }
     }
-
     $data['user_id'] = user_id();
 
     if (($dokumen && count($data) > 2) || !$dokumen) {

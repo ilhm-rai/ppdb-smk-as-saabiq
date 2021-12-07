@@ -23,6 +23,10 @@
           <th>No</th>
           <th>Tahun Akademik</th>
           <th>Status</th>
+          <th>Tahap</th>
+          <th>Mulai</th>
+          <th>Selesai</th>
+          <th>Pengumuman</th>
           <th>Aksi</th>
         </tr>
       </thead>
@@ -31,6 +35,10 @@
           <th>No</th>
           <th>Tahun Akademik</th>
           <th>Status</th>
+          <th>Tahap</th>
+          <th>Mulai</th>
+          <th>Selesai</th>
+          <th>Pengumuman</th>
           <th>Aksi</th>
         </tr>
         <tbody>
@@ -46,6 +54,10 @@
                   <button class="btn btn-danger btn-sm">Non-Aktif</button>
                 <?php endif; ?>
               </td>
+              <td><?= $t['status']; ?></td>
+              <td><?= $t['start_date']; ?></td>
+              <td><?= $t['end_date']; ?></td>
+              <td><?= $t['anounc_date']; ?></td>
 
               <td class="text-center">
                 <a href="/admin/tahun/detail/<?= $t['id']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></a>

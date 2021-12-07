@@ -41,34 +41,8 @@
         <input type="text" class="form-control form-control-user" id="link" name="link" placeholder="" value="<?= (old('link')) ? old('link') : $banner['link']; ?>">
       </div>
     </div>
-
   </form>
-  <div class="table-responsive">
-    <table class="table table-bordered td-align-middle" id="dataVendors" width="100%" cellspacing="0">
-      <thead>
-        <tr>
-          <th>No</th>
-          <th width='100px'>Logo</th>
-          <th>Vendor Name</th>
-          <th>Service</th>
-          <!-- <th>Owner</th> -->
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tfoot>
-        <tr>
-          <th>No</th>
-          <th>Logo</th>
-          <th>Vendor Name</th>
-          <th>Service</th>
-          <!-- <th>Owner</th> -->
-          <th>Action</th>
-        </tr>
-      </tfoot>
-      <tbody>
-      </tbody>
-    </table>
-  </div>
+
 </section>
 <?= $this->endSection(); ?>
 

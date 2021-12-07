@@ -31,7 +31,7 @@
       <div class="form-group row">
         <label for="nomor-registrasi" class="col-3 col-form-label">Nomor Registrasi</label>
         <div class="col-9">
-          <input type="text" class="form-control form-control-user <?= (session('errors.nomor-registrasi') ? 'is-invalid' : ''); ?>" id="nomor-registrasi" name="nomor-registrasi" value="<?= (registered()) ? $registrasi['nomor_registrasi'] : ''; ?>" readonly>
+          <input type="text" class="form-control form-control-user <?= session('errors.nomor-registrasi') ? 'is-invalid' : ''; ?>" id="nomor-registrasi" name="nomor-registrasi" value="<?= ($registrasi) ? $registrasi['nomor_registrasi'] : ''; ?>" readonly>
           <div class="invalid-feedback">
             <?= $validation->getError('nomor-registrasi'); ?>
           </div>
@@ -82,8 +82,16 @@
     <?php if (!registered()) : ?>
       <button type="submit" class="btn btn-warning btn-user btn-sm">Submit</button>
     <?php endif; ?>
+
   </form>
 
+  <?php if (registered()) : ?>
+    <form action="/siswa/registrasi/<?= ($registrasi) ? $registrasi['id'] : ''; ?>" method="POST" class="d-inline form-delete">
+      <?= csrf_field(); ?>
+      <input type="hidden" name="_method" value="DELETE">
+      <button type="submit" class="btn btn-danger btn-cencel"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline"><i class="fas fa-exclamation-triangle"></i> Batalkan Registrasi</span></span></button>
+    </form>
+  <?php endif; ?>
 </section>
 <?= $this->endSection(); ?>
 

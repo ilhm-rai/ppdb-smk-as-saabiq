@@ -192,9 +192,12 @@
         </div>
       </a>
     </div>
-    <div class="col-lg-3 mb-4">
+    <div class="col-lg-3 mb-4 card-menu">
       <a href="/siswa/dokumen">
         <div class="card bg-purple text-light shadow py-3">
+          <?php if (myDocument()) : ?>
+            <img class="checked-status" src="/img/checked.png" alt="">
+          <?php endif; ?>
           <div class="card-body text-center">
             <i class="fas fa-2x fa-fw fa-file-alt"></i>
             <div class="">
