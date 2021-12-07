@@ -28,19 +28,6 @@ function requirements_complete()
   }
 }
 
-function registered()
-{
-  $tahunAkademikModel = Model('TahunAkademikModel');
-  $registrasiModel = Model('RegistrasiModel');
-  $tahun = $tahunAkademikModel->getWhere(['active' => 1])->getRowArray();
-
-  $registrasi = $registrasiModel->getRegistrasiByUserIdAndTahunId(info_user()->id, $tahun['id']);
-  if ($registrasi) {
-    return true;
-  }
-  return false;
-}
-
 
 // Requirement
 function myIdetity()
@@ -67,6 +54,30 @@ function myAkademik()
     return true;
   }
 }
+function myNilai()
+{
+  $nilaiModel = Model('NilaiModel');
+  $myNilai = $nilaiModel->getWhere(['user_id' => user()->id])->getRowArray();
+  if ($myNilai) {
+    return true;
+  }
+}
+function myPrestasi()
+{
+  $prestasiModel = Model('PrestasiModel');
+  $myPrestasi = $prestasiModel->getWhere(['user_id' => user()->id])->getResultArray();
+  if ($myPrestasi) {
+    return true;
+  }
+}
+function myDocument()
+{
+  $documentModel = Model('DocumentModel');
+  $myDocument = $documentModel->getWhere(['user_id' => user()->id])->getResultArray();
+  if ($myDocument) {
+    return true;
+  }
+}
 
 function progress_requirement()
 {
@@ -81,5 +92,16 @@ function progress_requirement()
   if (myAkademik()) {
     $myProgress++;
   }
+  if (myNilai()) {
+    $myProgress++;
+  }
   return ($myProgress / $amountRequirement * 100);
+}
+
+function registered()
+{
+  if (progress_requirement() == 100) {
+    return true;
+  }
+  return false;
 }
