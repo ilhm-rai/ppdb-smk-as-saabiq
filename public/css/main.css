@@ -263,3 +263,8 @@ a {
 .btn-action:hover {
   background-color: #d8d6d6;
 }
+
+.swiper-slide img {
+  object-fit: fill;
+  object-position: center;
+}

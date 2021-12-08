@@ -33,8 +33,8 @@ class Dokumen extends BaseController
     $rules = [
       'foto' => 'max_size[documents.foto,5024]|ext_in[documents.foto,png,jpg,jpeg,pdf]',
       'kartu_nisn' => 'max_size[documents.kartu_nisn,5024]|ext_in[documents.kartu_nisn,png,jpg,jpeg,pdf]',
-      'rapor' => 'max_size[documents.rapor,5024]|ext_in[documents.rapor,pdf]',
-      'ijazah' => 'max_size[documents.ijazah,5024]|ext_in[documents.ijazah,pdf]',
+      'rapor' => 'max_size[documents.rapor,5024]|ext_in[documents.rapor,png,jpg,jpeg,pdf]',
+      'ijazah' => 'max_size[documents.ijazah,5024]|ext_in[documents.ijazah,png,jpg,jpeg,pdf]',
       'kk' => 'max_size[documents.kk,5024]|ext_in[documents.kk,png,jpg,jpeg,pdf]',
     ];
 
@@ -53,10 +53,9 @@ class Dokumen extends BaseController
 
     if ($imagefile = $this->request->getFiles()) {
       foreach ($imagefile['documents'] as $key => $img) {
-        dd($img->getClientExtension());
         if ($img->isValid() && !$img->hasMoved()) {
           $data[$key] = $img->getRandomName();
-          $path = ($key == 'rapor' || $key == 'ijazah') ? 'doc' : 'img';
+          $path = ($img->getClientExtension() == 'pdf') ? 'doc' : 'img';
           if ($dokumen) if ($dokumen[$key] !== $data[$key]) unlink("$path/$key/$dokumen[$key]");
           $img->move("$path/" . $key, $data[$key]);
         }
