@@ -18,6 +18,7 @@ class Dashboard extends BaseController
   }
   public function index()
   {
+
     $data = [
       'title' => 'Dashboard | PPDB SMK As-Saabiq',
       'banners' => $this->bannerModel->get()->getResultArray(),

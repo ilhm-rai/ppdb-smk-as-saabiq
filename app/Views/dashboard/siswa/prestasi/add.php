@@ -31,10 +31,13 @@
     <div class="form-group row">
       <label for="tingkat" class="col-sm-2 col-form-label">Tingkat</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control form-control-user <?= session('errors.tingkat') ? 'is-invalid' : ''; ?>" id="tingkat" name="tingkat" value="<?= old('tingkat'); ?>">
-        <div class="invalid-feedback">
-          <?= $validation->getError('tingkat'); ?>
-        </div>
+        <select class="custom-select" id="tingkat" name="tingkat">
+          <option selected>Pilih salah satu...</option>
+          <option value="Internasional">Internasional</option>
+          <option value="Nasional">Nasional</option>
+          <option value="Provinsi">Provinsi</option>
+          <option value="Kabupaten/Kota">Kabupaten/Kota</option>
+        </select>
       </div>
     </div>
     <div class="form-group row">

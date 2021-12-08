@@ -69,4 +69,11 @@ class Registrasi extends BaseController
     session()->setFlashdata('message-error', 'Mohon lengkapi lagi data anda!');
     return redirect()->to('/siswa/registrasi');
   }
+
+  public function delete($id)
+  {
+    $this->registrasiModel->delete($id);
+    session()->setFlashdata('message', 'Registrasi berhasil dibatalkan!');
+    return redirect()->to('/siswa/registrasi');
+  }
 }

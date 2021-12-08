@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Des 2021 pada 17.51
+-- Waktu pembuatan: 07 Des 2021 pada 15.40
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.11
 
@@ -40,7 +40,8 @@ CREATE TABLE `auth_activation_attempts` (
 --
 
 INSERT INTO `auth_activation_attempts` (`id`, `ip_address`, `user_agent`, `token`, `created_at`) VALUES
-(1, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36', 'd11fb12728e27ad16084b2c44e27d9c4', '2021-11-07 01:47:01');
+(1, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36', 'd11fb12728e27ad16084b2c44e27d9c4', '2021-11-07 01:47:01'),
+(2, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36', 'd3942c4eb4b516f36a0f6fb643a67137', '2021-12-07 07:02:51');
 
 -- --------------------------------------------------------
 
@@ -90,7 +91,6 @@ CREATE TABLE `auth_groups_users` (
 --
 
 INSERT INTO `auth_groups_users` (`id`, `group_id`, `user_id`) VALUES
-(3, 1, 7),
 (1, 2, 1);
 
 -- --------------------------------------------------------
@@ -113,14 +113,30 @@ CREATE TABLE `auth_logins` (
 --
 
 INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `success`) VALUES
-(1, '::1', 'muhamadarsaludin71@gmail.com', NULL, '2021-11-07 01:28:29', 0),
+(1, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-11-07 01:28:29', 0),
 (2, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-11-07 03:59:04', 1),
 (3, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-02 16:04:39', 1),
 (4, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-03 06:53:46', 1),
 (5, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-04 05:35:22', 1),
 (6, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-04 20:48:40', 1),
 (7, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-05 06:37:57', 1),
-(8, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-06 10:46:00', 1);
+(8, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-06 10:46:00', 1),
+(9, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-06 19:05:08', 1),
+(10, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-07 01:39:21', 1),
+(11, '::1', 'muhamadarsal71@gmail.com', 9, '2021-12-07 07:03:07', 1),
+(12, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-07 07:04:07', 1),
+(13, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-07 07:05:25', 1),
+(14, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-07 07:09:59', 1),
+(15, '::1', 'muhamadarsal71@gmail.com', 9, '2021-12-07 07:12:33', 1),
+(16, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-07 07:18:46', 1),
+(17, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-07 07:20:31', 1),
+(18, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-07 07:21:43', 1),
+(19, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-07 07:27:30', 1),
+(20, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-07 07:29:40', 1),
+(21, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-07 07:30:37', 1),
+(22, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-07 07:31:43', 1),
+(23, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-07 07:48:22', 1),
+(24, '::1', 'muhamadarsaludin71@gmail.com', 1, '2021-12-07 08:07:43', 1);
 
 -- --------------------------------------------------------
 
@@ -196,7 +212,7 @@ CREATE TABLE `banner` (
 --
 
 INSERT INTO `banner` (`id`, `user_id`, `title`, `image`, `link`, `active`, `created_at`, `updated_at`) VALUES
-(2, 0, 'Test', '1.png', '', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(4, 0, 'PPDB', 'Frame 8.png', '', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -263,6 +279,13 @@ CREATE TABLE `dokumen` (
   `foto` varchar(128) NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `dokumen`
+--
+
+INSERT INTO `dokumen` (`id`, `kartu_nisn`, `rapor`, `ijazah`, `kk`, `foto`, `user_id`) VALUES
+(1, '1638847340_b17cd2250c10928b7a5a.pdf', '1638847340_297846f66d8cf60ed878.pdf', '1638847340_02af46e5bb9e4ffcbbcc.pdf', '1638847340_19838ae17871ff3c192c.pdf', '1638847503_31fa4e6461486539f094.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -403,6 +426,13 @@ CREATE TABLE `nilai` (
   `user_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data untuk tabel `nilai`
+--
+
+INSERT INTO `nilai` (`id`, `b_sunda`, `b_inggris`, `pjok`, `ips`, `ipa`, `matematika`, `b_indo`, `ppkn`, `pai`, `user_id`) VALUES
+(1, 90, 90, 90, 90, 90, 90, 90, 90, 90, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -420,6 +450,13 @@ CREATE TABLE `prestasi` (
   `user_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data untuk tabel `prestasi`
+--
+
+INSERT INTO `prestasi` (`id`, `nama_prestasi`, `peringkat`, `tingkat`, `penyelenggara`, `tahun`, `file_sertifikat`, `user_id`) VALUES
+(2, 'Android Pemula', '-', 'Nasional', 'Dicoding', 2020, '1638840052_5a8c06534c0f18eea4b3.pdf', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -431,7 +468,7 @@ CREATE TABLE `registrasi` (
   `user_id` int(11) NOT NULL,
   `tahun_id` int(11) NOT NULL,
   `nomor_registrasi` varchar(20) NOT NULL,
-  `status` enum('Diterima','Ditolak','Pending') NOT NULL DEFAULT 'Pending',
+  `status` enum('Diterima','Ditolak','Direview') NOT NULL DEFAULT 'Direview',
   `jalur_id` int(10) UNSIGNED NOT NULL,
   `jurusan_id` int(11) NOT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
@@ -443,7 +480,7 @@ CREATE TABLE `registrasi` (
 --
 
 INSERT INTO `registrasi` (`id`, `user_id`, `tahun_id`, `nomor_registrasi`, `status`, `jalur_id`, `jurusan_id`, `created_at`, `updated_at`) VALUES
-(3, 1, 1, 'REG-RPL-20163754', 'Pending', 1, 1, '2021-12-05 03:07:05', '2021-12-05 03:07:05');
+(6, 1, 4, 'REG-RPL-95160482', 'Diterima', 1, 1, '2021-12-07 08:18:43', '2021-12-07 08:20:52');
 
 -- --------------------------------------------------------
 
@@ -455,16 +492,18 @@ CREATE TABLE `tahun_akademik` (
   `id` int(11) NOT NULL,
   `tahun` year(4) NOT NULL,
   `active` int(1) NOT NULL DEFAULT 0,
+  `status` enum('Pendaftaran','Review','Pengumuman','') NOT NULL,
   `start_date` datetime DEFAULT NULL,
-  `end_date` datetime DEFAULT NULL
+  `end_date` datetime DEFAULT NULL,
+  `anounc_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `tahun_akademik`
 --
 
-INSERT INTO `tahun_akademik` (`id`, `tahun`, `active`, `start_date`, `end_date`) VALUES
-(1, 2021, 1, NULL, NULL);
+INSERT INTO `tahun_akademik` (`id`, `tahun`, `active`, `status`, `start_date`, `end_date`, `anounc_date`) VALUES
+(4, 2021, 1, 'Pendaftaran', '2021-12-06 00:00:00', '2021-12-08 00:00:00', '2021-12-09 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -496,8 +535,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `user_image`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'muhamadarsaludin71@gmail.com', 'arsaludin', '$2y$10$3FJ94OnJYVz25xMR8gQodeinKJcF81HAB2TX4PHc.DeDCeTo6/dU2', 'default.png', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-11-07 01:46:21', '2021-11-21 03:05:15', NULL),
-(7, 'muhamadarsal71@gmail.com', 'arsal71', '$2y$10$yLo3KeUjSJNjoTnWHtuAvur77JSgHecQ41vAMZYG3Kwnar6kCclyC', 'default.png', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-11-21 00:30:15', '2021-11-21 00:30:15', NULL);
+(1, 'muhamadarsaludin71@gmail.com', 'arsaludin', '$2y$10$3FJ94OnJYVz25xMR8gQodeinKJcF81HAB2TX4PHc.DeDCeTo6/dU2', 'default.png', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-11-07 01:46:21', '2021-11-21 03:05:15', NULL);
 
 --
 -- Indexes for dumped tables
@@ -672,7 +710,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `auth_activation_attempts`
 --
 ALTER TABLE `auth_activation_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_groups`
@@ -684,13 +722,13 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT untuk tabel `auth_groups_users`
 --
 ALTER TABLE `auth_groups_users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_permissions`
@@ -714,7 +752,7 @@ ALTER TABLE `auth_tokens`
 -- AUTO_INCREMENT untuk tabel `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `data_akademik`
@@ -732,7 +770,7 @@ ALTER TABLE `data_ortu`
 -- AUTO_INCREMENT untuk tabel `dokumen`
 --
 ALTER TABLE `dokumen`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `hasil_seleksi`
@@ -768,31 +806,31 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `nilai`
 --
 ALTER TABLE `nilai`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `prestasi`
 --
 ALTER TABLE `prestasi`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `registrasi`
 --
 ALTER TABLE `registrasi`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `tahun_akademik`
 --
 ALTER TABLE `tahun_akademik`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

@@ -6,7 +6,9 @@
 <section class="py-3 mb-4">
   <div class="d-sm-flex align-items-center justify-content-between">
     <h3 class="content-heading mb-0 text-gray-800">Prestasi</h3>
-    <a href="/siswa/prestasi/add" class="d-block d-sm-inline-block btn rounded-pill btn-warning"><i class="fas fa-plus-square mr-1"></i>Tambah Prestasi</a>
+    <?php if (!registered()) : ?>
+      <a href="/siswa/prestasi/add" class="d-block d-sm-inline-block btn rounded-pill btn-warning"><i class="fas fa-plus-square mr-1"></i>Tambah Prestasi</a>
+    <?php endif; ?>
   </div>
   <div class="flash-data" data-flashdata="<?= session()->getFlashdata('message'); ?>"></div>
 
@@ -26,7 +28,9 @@
           <th>Penyelenggara</th>
           <th>Tahun</th>
           <th>File</th>
-          <th width="15%">Aksi</th>
+          <?php if (!registered()) : ?>
+            <th width="15%">Aksi</th>
+          <?php endif; ?>
         </tr>
       </thead>
       <tbody>
@@ -62,7 +66,9 @@
           <th>Penyelenggara</th>
           <th>Tahun</th>
           <th>File</th>
-          <th>Aksi</th>
+          <?php if (!registered()) : ?>
+            <th>Aksi</th>
+          <?php endif; ?>
         </tr>
         <tbody>
 

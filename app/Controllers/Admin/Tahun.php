@@ -50,13 +50,20 @@ class Tahun extends BaseController
   public function save()
   {
     if (!$this->validate([
-      'tahun' => 'required'
+      'tahun' => 'required',
+      'active' => 'required',
+      'start-date' => 'required',
+      'end-date' => 'required',
+      'anounc-date' => 'required',
     ])) {
       return redirect()->to('/admin/tahun/add')->withInput()->with('errors', $this->validator->getErrors());
     }
     $this->tahunAkademikModel->save([
       'tahun' => $this->request->getVar('tahun'),
-      'active' => $this->request->getVar('status'),
+      'active' => $this->request->getVar('active'),
+      'start_date' => $this->request->getVar('start-date'),
+      'end_date' => $this->request->getVar('end-date'),
+      'anounc_date' => $this->request->getVar('anounc-date'),
     ]);
     session()->setFlashdata('message', 'Tahun akademik baru berhasil ditambahkan!');
     return redirect()->to('/admin/tahun');
@@ -79,13 +86,21 @@ class Tahun extends BaseController
   {
     if (!$this->validate([
       'tahun' => 'required',
+      'active' => 'required',
+      'start-date' => 'required',
+      'end-date' => 'required',
+      'anounc-date' => 'required',
+
     ])) {
-      return redirect()->to('/admin/thun/edit/' . $id)->withInput()->with('errors', $this->validator->getErrors());
+      return redirect()->to('/admin/tahun/edit/' . $id)->withInput()->with('errors', $this->validator->getErrors());
     }
     $this->tahunAkademikModel->save([
       'id'    => $id,
       'tahun' => $this->request->getVar('tahun'),
-      'active' => $this->request->getVar('status'),
+      'active' => $this->request->getVar('active'),
+      'start_date' => $this->request->getVar('start-date'),
+      'end_date' => $this->request->getVar('end-date'),
+      'anounc_date' => $this->request->getVar('anounc-date'),
     ]);
     session()->setFlashdata('message', 'Tahun akademik berhasil diubah!');
     return redirect()->to('/admin/tahun');

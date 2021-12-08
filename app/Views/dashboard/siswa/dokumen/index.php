@@ -63,9 +63,9 @@
         </div>
       </div>
     </div>
-
-    <button type="submit" class="btn btn-warning btn-user btn-sm">Simpan</button>
-
+    <?php if (!registered()) : ?>
+      <button type="submit" class="btn btn-warning btn-user btn-sm">Simpan</button>
+    <?php endif; ?>
   </form>
 </section>
 <?= $this->endSection(); ?>

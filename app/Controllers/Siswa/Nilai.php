@@ -43,6 +43,7 @@ class Nilai extends BaseController
       return redirect()->to('/siswa/nilai')->withInput()->with('errors', $this->validator->getErrors());
     }
 
+
     $data = [
       'matematika' => $this->request->getPost('matematika'),
       'ipa' => $this->request->getPost('ipa'),
@@ -55,6 +56,7 @@ class Nilai extends BaseController
       'b_sunda' => $this->request->getPost('b_sunda'),
       'user_id' => user_id()
     ];
+    // dd($data);
 
     $nilai ? $data['id'] = $nilai->id : '';
 
