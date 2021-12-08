@@ -559,7 +559,7 @@
             <div class="col-3">
               <div class="img-add w-100">
                 <label for="image">
-                  <img src="/doc/siswa/foto/<?= $document['foto']; ?>" class="main-preview object-fit" />
+                  <img src="/<?= pathinfo($document['foto'], PATHINFO_EXTENSION) == 'pdf' ? 'doc' : 'img'; ?>/foto/<?= $document['foto']; ?>" class="main-preview object-fit" />
                 </label>
                 <input id="image" name="image" type="file" class="<?= (session('errors.image') ? 'is-invalid' : ''); ?>" onchange="previewImg('image','main-preview')" />
                 <div class="invalid-feedback text-center">
@@ -573,25 +573,25 @@
           <div class="form-group row">
             <label for="kartu_nisn" class="col-3 col-form-label">Kartu NISN</label>
             <div class="col-9">
-              <iframe src="/doc/siswa/kartu_nisn/<?= $document['kartu_nisn']; ?>" height="400" class="w-100 preview-pdf mt-5" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html" frameborder="0"></iframe>
+              <iframe src="/<?= pathinfo($document['kartu_nisn'], PATHINFO_EXTENSION) == 'pdf' ? 'doc' : 'img'; ?>/kartu_nisn/<?= $document['kartu_nisn']; ?>" height="400" class="w-100 preview-pdf mt-5" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html" frameborder="0"></iframe>
             </div>
           </div>
           <div class="form-group row">
             <label for="rapor" class="col-3 col-form-label">Rapor</label>
             <div class="col-9">
-              <iframe src="/doc/siswa/rapor/<?= $document['rapor']; ?>" height="400" class="w-100 preview-pdf mt-5" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html" frameborder="0"></iframe>
+              <iframe src="/<?= pathinfo($document['rapor'], PATHINFO_EXTENSION) == 'pdf' ? 'doc' : 'img'; ?>/rapor/<?= $document['rapor']; ?>" height="400" class="w-100 preview-pdf mt-5" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html" frameborder="0"></iframe>
             </div>
           </div>
           <div class="form-group row">
             <label for="ijazah" class="col-3 col-form-label">Ijazah</label>
             <div class="col-9">
-              <iframe src="/doc/siswa/ijazah/<?= $document['ijazah']; ?>" height="400" class="w-100 preview-pdf mt-5" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html" frameborder="0"></iframe>
+              <iframe src="/<?= pathinfo($document['ijazah'], PATHINFO_EXTENSION) == 'pdf' ? 'doc' : 'img'; ?>/ijazah/<?= $document['ijazah']; ?>" height="400" class="w-100 preview-pdf mt-5" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html" frameborder="0"></iframe>
             </div>
           </div>
           <div class="form-group row">
             <label for="kk" class="col-3 col-form-label">Kartu Keluarga</label>
             <div class="col-9">
-              <iframe src="/doc/siswa/kk/<?= $document['kk']; ?>" height="400" class="w-100 preview-pdf mt-5" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html" frameborder="0"></iframe>
+              <iframe src="/<?= pathinfo($document['kk'], PATHINFO_EXTENSION) == 'pdf' ? 'doc' : 'img'; ?>/kk/<?= $document['kk']; ?>" height="400" class="w-100 preview-pdf mt-5" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html" frameborder="0"></iframe>
             </div>
           </div>
           <?php if (!registered()) : ?>
