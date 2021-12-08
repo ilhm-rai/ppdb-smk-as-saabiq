@@ -34,6 +34,7 @@ $routes->setAutoRoute(true);
 
 $routes->get('/', 'Auth::login');
 $routes->get('/login', 'Auth::login');
+$routes->get('/logout', 'Auth::logout');
 $routes->get('/register', 'Auth::register');
 $routes->group('/admin', 'Admin/dashboard::index', ['filter' => 'role:admin'], function ($routes) {
 });

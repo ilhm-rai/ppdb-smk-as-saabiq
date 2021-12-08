@@ -9,9 +9,10 @@ class Auth extends \Myth\Auth\Controllers\AuthController
     // No need to show a login form if the user
     // is already logged in.
     if ($this->auth->check()) {
-      if (info_user() == 'admin') {
-        $redirectURL = session('redirect_url') ?? '/admin/dashboard';
-      }
+      // helper('info');
+      // if (info_user() == 'admin') {
+      //   $redirectURL = session('redirect_url') ?? '/admin/dashboard';
+      // }
       $redirectURL = session('redirect_url') ?? '/siswa/dashboard';
       unset($_SESSION['redirect_url']);
 
@@ -33,5 +34,18 @@ class Auth extends \Myth\Auth\Controllers\AuthController
       'title' => 'Register'
     ];
     return view('auth/register', $data);
+  }
+
+  public function logout()
+  {
+    // $info = info_user();
+    if ($this->auth->check()) {
+      $this->auth->logout();
+    }
+    // if ($info->role_name = 'admin') {
+    //   return redirect()->to(site_url('/siswa/dashboard'));
+    // } else {
+    // }
+    return redirect()->to(site_url('/siswa/dashboard'));
   }
 }
