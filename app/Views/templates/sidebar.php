@@ -7,122 +7,128 @@
     </div>
   </a>
 
-  <!-- Divider -->
-  <hr class="sidebar-divider">
-
-  <!-- Heading -->
-  <div class="sidebar-heading">
-    Admin
-  </div>
-  <!-- Nav Item - Dashboard -->
-  <li class="nav-item">
-    <a class="nav-link" href="<?= base_url('admin/dashboard'); ?>">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Dashboard</span></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="<?= base_url('admin/banner'); ?>">
-      <i class="fas fa-fw fa-bullhorn"></i>
-      <span>Banner Informasi</span></a>
-  </li>
-
-  <!-- Nav Item User - Pages Collapse Menu -->
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">
-      <i class="fas fa-fw fa-user"></i>
-      <span>Data User</span>
-    </a>
-    <div id="collapseUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
-        <h6 class="collapse-header">Data Master User</h6>
-        <a class="collapse-item" href="<?= base_url('admin/users/main'); ?>">Daftar User</a>
-        <a class="collapse-item" href="<?= base_url('admin/users/roles'); ?>">Daftar User Role</a>
-      </div>
+  <?php if (info_user()->role_name == 'admin') : ?>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+    <!-- Heading -->
+    <div class="sidebar-heading">
+      Admin
     </div>
-  </li>
-  <!-- Nav Tahun Akademik -->
-  <li class="nav-item">
-    <a class="nav-link" href="<?= base_url('admin/tahun'); ?>">
-      <i class="fas fa-fw fa-calendar-alt"></i>
-      <span>Tahun Akademik</span></a>
-  </li>
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+      <a class="nav-link" href="<?= base_url('admin/dashboard'); ?>">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<?= base_url('admin/banner'); ?>">
+        <i class="fas fa-fw fa-bullhorn"></i>
+        <span>Banner Informasi</span></a>
+    </li>
+
+    <!-- Nav Item User - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">
+        <i class="fas fa-fw fa-user"></i>
+        <span>Data User</span>
+      </a>
+      <div id="collapseUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Data Master User</h6>
+          <a class="collapse-item" href="<?= base_url('admin/users/main'); ?>">Daftar User</a>
+          <a class="collapse-item" href="<?= base_url('admin/users/roles'); ?>">Daftar User Role</a>
+        </div>
+      </div>
+    </li>
+    <!-- Nav Tahun Akademik -->
+    <li class="nav-item">
+      <a class="nav-link" href="<?= base_url('admin/tahun'); ?>">
+        <i class="fas fa-fw fa-calendar-alt"></i>
+        <span>Tahun Akademik</span></a>
+    </li>
 
 
-  <!-- Nav Item Jurusan -->
-  <li class="nav-item">
-    <a class="nav-link" href="<?= base_url('admin/jurusan'); ?>">
-      <i class="fas fa-fw fa-graduation-cap"></i>
-      <span>Data Jurusan</span></a>
-  </li>
+    <!-- Nav Item Jurusan -->
+    <li class="nav-item">
+      <a class="nav-link" href="<?= base_url('admin/jurusan'); ?>">
+        <i class="fas fa-fw fa-graduation-cap"></i>
+        <span>Data Jurusan</span></a>
+    </li>
 
 
-  <!-- Nav Item Jalur Registrasi -->
-  <li class="nav-item">
-    <a class="nav-link" href="<?= base_url('admin/jalur'); ?>">
-      <i class="fas fa-fw fa-map-signs"></i>
-      <span>Jalur Registrasi</span></a>
-  </li>
-  <!-- Nav Item Registrasi -->
-  <li class="nav-item">
-    <a class="nav-link" href="<?= base_url('admin/registrasi'); ?>">
-      <i class="fas fa-fw fa-address-card"></i>
-      <span>Registrasi</span></a>
-  </li>
+    <!-- Nav Item Jalur Registrasi -->
+    <li class="nav-item">
+      <a class="nav-link" href="<?= base_url('admin/jalur'); ?>">
+        <i class="fas fa-fw fa-map-signs"></i>
+        <span>Jalur Registrasi</span></a>
+    </li>
+    <!-- Nav Item Registrasi -->
+    <li class="nav-item">
+      <a class="nav-link" href="<?= base_url('admin/registrasi'); ?>">
+        <i class="fas fa-fw fa-address-card"></i>
+        <span>Registrasi</span></a>
+    </li>
 
+  <?php endif; ?>
+  <?php if (registrationOpen()) : ?>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
 
-  <!-- Divider -->
-  <hr class="sidebar-divider">
+    <!-- Heading -->
+    <div class="sidebar-heading">
+      Siswa
+    </div>
 
-  <!-- Heading -->
-  <div class="sidebar-heading">
-    Siswa
-  </div>
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+      <a class="nav-link" href="/siswa/dashboard">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span></a>
+    </li>
 
-  <!-- Nav Item - Dashboard -->
-  <li class="nav-item">
-    <a class="nav-link" href="/siswa/dashboard">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Dashboard</span></a>
-  </li>
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+      <a class="nav-link" href="/siswa/registrasi">
+        <i class="fas fa-fw fa-address-card"></i>
+        <span>Registrasi</span></a>
+    </li>
 
-  <!-- Nav Item - Tables -->
-  <li class="nav-item">
-    <a class="nav-link" href="/siswa/registrasi">
-      <i class="fas fa-fw fa-address-card"></i>
-      <span>Registrasi</span></a>
-  </li>
-
-  <li class="nav-item">
-    <a class="nav-link" href="/siswa/identitas">
-      <i class="fas fa-fw fa-user"></i>
-      <span>Identitas Diri</span></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/siswa/ortu">
-      <i class="fas fa-fw fa-users"></i>
-      <span>Data Orang Tua</span></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/siswa/akademik">
-      <i class="fas fa-fw fa-graduation-cap"></i>
-      <span>Data Akademik</span></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/siswa/nilai">
-      <i class="fas fa-fw fa-clipboard-list"></i>
-      <span>Data Nilai</span></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/siswa/prestasi">
-      <i class="fas fa-fw fa-trophy"></i>
-      <span>Prestasi</span></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/siswa/dokumen">
-      <i class="fas fa-fw fa-file-alt"></i>
-      <span>Dokumen Pendukung</span></a>
-  </li>
-
+    <li class="nav-item">
+      <a class="nav-link" href="/siswa/identitas">
+        <i class="fas fa-fw fa-user"></i>
+        <span>Identitas Diri</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/siswa/ortu">
+        <i class="fas fa-fw fa-users"></i>
+        <span>Data Orang Tua</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/siswa/akademik">
+        <i class="fas fa-fw fa-graduation-cap"></i>
+        <span>Data Akademik</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/siswa/nilai">
+        <i class="fas fa-fw fa-clipboard-list"></i>
+        <span>Data Nilai</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/siswa/prestasi">
+        <i class="fas fa-fw fa-trophy"></i>
+        <span>Prestasi</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/siswa/dokumen">
+        <i class="fas fa-fw fa-file-alt"></i>
+        <span>Dokumen Pendukung</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/siswa/pengumuman">
+        <i class="fas fa-2x fa-fw fa-bullhorn"></i>
+        <span>Pengumuman</span></a>
+    </li>
+  <?php endif; ?>
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">
 

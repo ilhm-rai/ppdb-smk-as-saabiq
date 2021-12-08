@@ -31,7 +31,7 @@
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                 Jumlah Pendaftar</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $registrasi['amount']; ?> Orang</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $registrasi_amount['amount']; ?> Orang</div>
             </div>
             <div class="col-auto">
               <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -93,8 +93,8 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                Status Registrasi</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">Direview</div>
+                Status PPDB</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">Tahap <?= $tahun['status']; ?></div>
             </div>
             <div class="col-auto">
               <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -207,9 +207,12 @@
         </div>
       </a>
     </div>
-    <div class="col-lg-3 mb-4">
-      <a href="/siswa/dokumen">
+    <div class="col-lg-3 mb-4 card-menu">
+      <a href="/siswa/pengumuman">
         <div class="card bg-purple text-light shadow py-3">
+          <?php if (anouncement()) : ?>
+            <img class="checked-status" src="/img/checked.png" alt="">
+          <?php endif; ?>
           <div class="card-body text-center">
             <i class="fas fa-2x fa-fw fa-bullhorn"></i>
             <div class="">
