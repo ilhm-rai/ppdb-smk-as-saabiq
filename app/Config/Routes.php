@@ -31,7 +31,8 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Siswa/Dashboard::index');
+
+$routes->get('/', 'Auth::login');
 $routes->get('/login', 'Auth::login');
 $routes->get('/register', 'Auth::register');
 $routes->group('/admin', 'Admin/dashboard::index', ['filter' => 'role:admin'], function ($routes) {
