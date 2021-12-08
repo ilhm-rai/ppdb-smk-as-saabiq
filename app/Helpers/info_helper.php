@@ -2,6 +2,52 @@
 
 use CodeIgniter\Model;
 
+function anouncement()
+{
+  $tahunModel = Model('TahunAkademikModel');
+  $registrasiModel = Model('RegistrasiModel');
+  $tahunAkademik = $tahunModel->getWhere(['active' => 1])->getRowArray();
+  $timeToAnouncement = strtotime($tahunAkademik['anounc_date']);
+
+  if (now() >= $timeToAnouncement) {
+    // $lulus = $registrasiModel->getWhere(['tahun_id' => $tahunAkademik['id'], 'status' => 'Diterima'])->getResultArray();
+    $tahunModel->save([
+      'id' => $tahunAkademik['id'],
+      'status' => 'Pengumuman',
+    ]);
+    return true;
+  }
+  return false;
+}
+
+function deadline()
+{
+  $tahunModel = Model('TahunAkademikModel');
+  $tahunAkademik = $tahunModel->getWhere(['active' => 1])->getRowArray();
+  $deadline = strtotime($tahunAkademik['end_date']);
+  if (now() >= $deadline) {
+    $tahunModel->save([
+      'id' => $tahunAkademik['id'],
+      'status' => 'Review'
+    ]);
+    return true;
+  }
+}
+
+function registrationOpen()
+{
+  $tahunModel = Model('TahunAkademikModel');
+  $tahunAkademik = $tahunModel->getWhere(['active' => 1])->getRowArray();
+  if ($tahunAkademik) {
+    $start = strtotime($tahunAkademik['start_date']);
+    $deadline = strtotime($tahunAkademik['end_date']);
+    if (now() >= $start && $tahunAkademik['active'] == 1) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function info_user()
 {
   if (logged_in()) {

@@ -33,9 +33,11 @@ class Registrasi extends BaseController
       'jalur' => $this->jalurRegistrasiModel->get()->getResultArray(),
       'jurusan' => $this->jurusanModel->get()->getResultArray(),
     ];
-    $data['registrasi'] = $this->registrasiModel->getRegistrasiByUserIdAndTahunId(info_user()->id, $data['tahun']['id']);
-    // dd($data);
-    return view('dashboard/siswa/registrasi/index', $data);
+    if (registrationOpen()) {
+      $data['registrasi'] = $this->registrasiModel->getRegistrasiByUserIdAndTahunId(info_user()->id, $data['tahun']['id']);
+      return view('dashboard/siswa/registrasi/index', $data);
+    }
+    return view('errors/not_open', $data);
   }
 
   public function save()

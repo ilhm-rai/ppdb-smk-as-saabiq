@@ -72,6 +72,16 @@ class Registrasi extends BaseController
       'status' => 'Diterima'
     ]);
     session()->setFlashdata('message', 'Data registrasi diterima!');
-    return redirect()->to('/admin/registrasi/' . $id);
+    return redirect()->to('/admin/registrasi/assessment/' . $id);
+  }
+
+  public function disapprove($id)
+  {
+    $this->registrasiModel->save([
+      'id' => $id,
+      'status' => 'Ditolak'
+    ]);
+    session()->setFlashdata('message', 'Data registrasi ditolak!');
+    return redirect()->to('/admin/registrasi/assessment/' . $id);
   }
 }

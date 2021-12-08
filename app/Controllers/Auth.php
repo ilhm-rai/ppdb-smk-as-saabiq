@@ -9,7 +9,10 @@ class Auth extends \Myth\Auth\Controllers\AuthController
     // No need to show a login form if the user
     // is already logged in.
     if ($this->auth->check()) {
-      $redirectURL = session('redirect_url') ?? '/';
+      if (info_user() == 'admin') {
+        $redirectURL = session('redirect_url') ?? '/admin/dashboard';
+      }
+      $redirectURL = session('redirect_url') ?? '/siswa/dashboard';
       unset($_SESSION['redirect_url']);
 
       return redirect()->to($redirectURL);

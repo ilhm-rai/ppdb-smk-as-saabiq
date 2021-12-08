@@ -31,9 +31,11 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Siswa/Dashboard::index');
 $routes->get('/login', 'Auth::login');
 $routes->get('/register', 'Auth::register');
+$routes->group('/admin', 'Admin/dashboard::index', ['filter' => 'role:admin'], function ($routes) {
+});
 
 
 // Route for delete items

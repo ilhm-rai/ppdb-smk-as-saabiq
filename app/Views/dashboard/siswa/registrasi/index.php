@@ -82,10 +82,9 @@
     <?php if (!registered()) : ?>
       <button type="submit" class="btn btn-warning btn-user btn-sm">Submit</button>
     <?php endif; ?>
-
   </form>
 
-  <?php if (registered()) : ?>
+  <?php if (!deadline() && registered()) : ?>
     <form action="/siswa/registrasi/<?= ($registrasi) ? $registrasi['id'] : ''; ?>" method="POST" class="d-inline form-delete">
       <?= csrf_field(); ?>
       <input type="hidden" name="_method" value="DELETE">

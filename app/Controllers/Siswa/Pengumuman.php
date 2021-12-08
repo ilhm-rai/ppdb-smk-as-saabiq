@@ -8,7 +8,7 @@ use App\Models\RegistrasiModel;
 use App\Models\JurusanModel;
 use App\Models\TahunAkademikModel;
 
-class Dashboard extends BaseController
+class Pengumuman extends BaseController
 {
   protected $bannerModel;
   protected $registrasiModel;
@@ -26,19 +26,16 @@ class Dashboard extends BaseController
   public function index()
   {
     $data = [
-      'title' => 'Dashboard | PPDB SMK As-Saabiq',
-      'banners' => $this->bannerModel->get()->getResultArray(),
-      'registrasi_amount' => $this->registrasiModel->getAmountRegistrasiByTahun(),
-      'registrasi' => $this->registrasiModel->getRegistrasiByTahunActive(),
+      'title' => 'Pengumuman | PPDB SMK As-Saabiq',
       'tahun' => $this->tahunAkademikModel->getWhere(['active' => 1])->getRowArray(),
-      'jurusan_amount' => $this->jurusanModel->countAll(),
     ];
-    // dd($data);
-    // dd(anouncement());
-    if (registrationOpen()) {
-      return view('dashboard/siswa/index', $data);
+    $data['registrasi'] = $this->registrasiModel->getRegistrasiByUserIdAndTahunId(user_id(), $data['tahun']['id']);
+
+    if (anouncement()) {
+      return view('dashboard/siswa/pengumuman/index', $data);
     }
-    $data['error'] = 'Maaf untuk saat ini pendaftaran belum dibuka!';
+    $data['error'] = 'Pengumuman PPDB akan diumumkan pada ' . date("d M Y (h:i a)", strtotime($data['tahun']['anounc_date'])) . ' saat ini masih tahap ' . $data['tahun']['status'];
+
     return view('errors/not_open', $data);
   }
 }
